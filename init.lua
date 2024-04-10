@@ -8,5 +8,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 
-require("vim-options")
+vim.schedule(function()
+  require "mappings"
+end)
+require "options"
 require("lazy").setup({import = "plugins"})
