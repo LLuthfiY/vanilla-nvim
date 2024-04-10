@@ -12,4 +12,10 @@ vim.schedule(function()
   require "mappings"
 end)
 require "options"
-require("lazy").setup({import = "plugins"})
+
+local lazy_config = require "configs.lazy"
+
+-- load plugins
+require("lazy").setup({
+  { import = "plugins" },
+}, lazy_config)
