@@ -5,9 +5,7 @@ return {
     build = ":MasonUpdate",
     config = function()
       require("mason").setup({
-        registries = {
-          "github:mason-org/mason-registry",
-        }
+        providers = { "mason.providers.client", "mason.providers.registry-api", }
       })
     end,
   },
