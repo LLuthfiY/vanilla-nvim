@@ -1,3 +1,4 @@
+require "options"
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -11,7 +12,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.schedule(function()
   require "mappings"
 end)
-require "options"
 
 local lazy_config = require "configs.lazy"
 

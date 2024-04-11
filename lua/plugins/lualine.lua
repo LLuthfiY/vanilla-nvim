@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  lazy = false,
+  event = {"bufReadPre", "BufNewFile"},
   config = function()
     require("lualine").setup({
       options = {

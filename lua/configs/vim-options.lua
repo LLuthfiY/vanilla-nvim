@@ -18,4 +18,3 @@ vim.wo.number = true
 
 vim.opt.shell = "zsh"
 vim.opt.relativenumber = true
-print("vim")
