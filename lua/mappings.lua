@@ -68,14 +68,15 @@ map({ "n", "i" }, "<C-S-f>", "<cmd>Telescope live_grep<cr>", { desc = "Find Text
 map("n", "<c-b>", "<cmd>Neotree focus<cr>", { desc = "Focus NvimTree" })
 map("n", "<c-n>", "<cmd>Neotree toggle<cr>", { desc = "Toggle NvimTree" })
 
---lazygit
+--Git
 map({ "n", "i" }, "<c-g>", function()
 	lazygit:toggle()
 end, { desc = "Toggle LazyGit" })
+map("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+map("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
 
 --conform
 map({ "n" }, "<leader>fm", function()
 	require("conform").format()
 	print("File Format with conform")
 end, { desc = "Conform" })
-
