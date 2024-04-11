@@ -28,5 +28,3 @@ local opts = {
 }
 
 require("catppuccin").setup(opts)
-
-vim.cmd([[colorscheme catppuccin-frappe]])
