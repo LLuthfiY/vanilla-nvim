@@ -23,7 +23,7 @@ local opts = {
 		TelescopePromptTitle = { fg = palette.surface0, bg = palette.red },
 		TelescopeResultsBorder = { fg = palette.base, bg = palette.base },
 		TelescopeResultsNormal = { bg = palette.base },
-		TelescopeResultsTitle = { fg = palette.surface0, bg = palette.surface0 },
+		TelescopeResultsTitle = { fg = palette.base, bg = palette.base },
 	},
 }
 
