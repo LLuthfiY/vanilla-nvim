@@ -1,4 +1,4 @@
-------------------------------------------------------------------------------------------------------------------------
+-- map("v", "<c-/>", function ()
 -- Important remove the default mappings from terminal emulator like kiity, because some keymap need that, like c-s-f --
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ end, { desc = "File Format with conform" })
 map({ "n", "i", "v" }, "qq", "<ESC>", { desc = "Escape insert mode" })
 
 --save
-map({ "n", "i" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
+map({ "n", "i", "v" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- move and copy line
 map({ "n", "i" }, "<A-j>", "<cmd>move .+1<CR>", { desc = "Move Line Down" })
