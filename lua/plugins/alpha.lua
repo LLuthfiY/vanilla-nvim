@@ -3,6 +3,6 @@ return {
   lazy = false,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-    require("configs.aplha")
+    require("configs.alpha")
 	end,
 }

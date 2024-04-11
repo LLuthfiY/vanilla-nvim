@@ -7,4 +7,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"MunifTanjim/nui.nvim",
 	},
+  config = function()
+    require("configs.tree")
+  end
 }
