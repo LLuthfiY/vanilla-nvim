@@ -66,12 +66,12 @@ dashboard.section.header.val = {
 	"⠀⠀⠀⢸⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢿⣿⣿⣿⣿⣿⣶⣶⣶⣦⣬⣿⣿⢰⣦⣀⠀⠀⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀",
 }
 -- Set menu
--- dashboard.section.buttons.val = {
--- 	dashboard.button("f", " 🎄  Find file", ":Telescope find_files<CR>"),
--- 	dashboard.button("p", " 🌳  Projects", ":Telescope projects<CR>"),
--- 	dashboard.button("r", " 🚀  Recent", ":Telescope oldfiles<CR>"),
--- 	dashboard.button("q", " 🏓  Quit NVIM", ":qa<CR>"),
--- }
+dashboard.section.buttons.val = {
+	dashboard.button("f", " Find file", ":Telescope find_files<CR>"),
+	dashboard.button("p", " Projects", ":Telescope projects<CR>"),
+	dashboard.button("r", " Recent", ":Telescope oldfiles<CR>"),
+	dashboard.button("q", " Quit NVIM", ":qa<CR>"),
+}
 
 -- Set footer
 --   NOTE: This is currently a feature in my fork of alpha-nvim (opened PR #21, will update snippet if added to main)
