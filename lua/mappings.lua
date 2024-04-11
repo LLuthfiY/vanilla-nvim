@@ -73,3 +73,8 @@ map({ "n", "i" }, "<c-g>", function()
 	lazygit:toggle()
 end, { desc = "Toggle LazyGit" })
 
+--conform
+map({ "n", "i" }, "<leader>fm", function()
+	require("conform").format()
+	print("File Format with conform")
+end, { desc = "Conform" })
