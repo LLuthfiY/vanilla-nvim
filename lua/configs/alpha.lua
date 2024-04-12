@@ -60,6 +60,20 @@ local recent_files = {
   },
 }
 
+local update_plugins = {
+  type = "button",
+  val = add_spaces("  Update plugins"),
+  on_press = function()
+    require("lazy").update()
+  end,
+  opts = {
+    position = "center",
+    align_shortcut = "right",
+    shortcut = "u",
+    keymap = { { "n", "t" }, "u", "<cmd>Lazy update<cr>" },
+  },
+}
+
 local config_nvim = {
 	type = "button",
 	val = add_spaces("  Config"),
@@ -76,15 +90,15 @@ local config_nvim = {
 
 local quit = {
 	type = "button",
-	val = add_spaces("  Quit"),
+	val = add_spaces("  Quit", 31),
 	on_press = function()
 		vim.cmd("quit")
 	end,
 	opts = {
 		position = "center",
     align_shortcut = "right",
-		shortcut = "q",
-		keymap = { { "n", "t" }, "q", "<cmd>quit<cr>" },
+		shortcut = "qq",
+		keymap = { { "n", "t" }, "qq", "<cmd>quit<cr>" },
 	},
 }
 
@@ -107,6 +121,7 @@ dashboard.config.layout = {
 	find_files,
 	new_file,
   recent_files,
+  update_plugins,
 	config_nvim,
 	quit,
 	{ type = "padding", val = 2 },
