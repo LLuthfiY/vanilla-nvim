@@ -41,6 +41,8 @@ map({ "n", "i", "v" }, "<C-S-z>", "<cmd>redo<CR>", { desc = "Redo" })
 -- cursor
 map({ "n", "i" }, "<C-a>", "<ESC>ggVG", { desc = "Select All" })
 map({ "n", "i" }, "<C-d>", "<ESC>viws", { desc = "Delete Word" })
+map("i", "<c-j>", "<down>", { desc = "Move cursor down" })
+map("i", "<c-k>", "<up>", { desc = "Move cursor up" })
 
 -- buffer
 map({ "n", "i" }, "qw", function()
