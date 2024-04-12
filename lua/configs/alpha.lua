@@ -3,18 +3,17 @@ local dashboard = require("alpha.themes.dashboard")
 require("alpha.term")
 
 local add_spaces = function(text, width)
-  width = width or 32
-  return text .. string.rep(" ", math.max(0, width - vim.fn.strdisplaywidth(text)))
+	width = width or 32
+	return text .. string.rep(" ", math.max(0, width - vim.fn.strdisplaywidth(text)))
 end
 
 local header = {
 	type = "terminal",
-	command = "viu ~/.config/nvim/static/kalsit_catppuccin.png",
+	command = "viu -b ~/.config/nvim/static/kalsit_catppuccin.png",
 	height = 18,
 	width = 150,
 	opts = {
 		redraw = true,
-		position = "center",
 	},
 }
 
@@ -25,8 +24,8 @@ local find_files = {
 		require("telescope.builtin").find_files()
 	end,
 	opts = {
-    align_shortcut = "right",
 		position = "center",
+		align_shortcut = "right",
 		shortcut = "f",
 		keymap = { { "n", "t" }, "f", "<cmd>Telescope find_files<cr>" },
 	},
@@ -40,38 +39,38 @@ local new_file = {
 	end,
 	opts = {
 		position = "center",
-    align_shortcut = "right",
+		align_shortcut = "right",
 		shortcut = "n",
 		keymap = { { "n", "t" }, "n", "<cmd>enew<cr>" },
 	},
 }
 
 local recent_files = {
-  type = "button",
-  val = add_spaces("  Recently opened files"),
-  on_press = function()
-    require("telescope.builtin").oldfiles()
-  end,
-  opts = {
-    position = "center",
-    align_shortcut = "right",
-    shortcut = "r",
-    keymap = { { "n", "t" }, "r", "<cmd>Telescope oldfiles<cr>" },
-  },
+	type = "button",
+	val = add_spaces("  Recently opened files"),
+	on_press = function()
+		require("telescope.builtin").oldfiles()
+	end,
+	opts = {
+		position = "center",
+		align_shortcut = "right",
+		shortcut = "r",
+		keymap = { { "n", "t" }, "r", "<cmd>Telescope oldfiles<cr>" },
+	},
 }
 
 local update_plugins = {
-  type = "button",
-  val = add_spaces("  Update plugins"),
-  on_press = function()
-    require("lazy").update()
-  end,
-  opts = {
-    position = "center",
-    align_shortcut = "right",
-    shortcut = "u",
-    keymap = { { "n", "t" }, "u", "<cmd>Lazy update<cr>" },
-  },
+	type = "button",
+	val = add_spaces("  Update plugins"),
+	on_press = function()
+		require("lazy").update()
+	end,
+	opts = {
+		position = "center",
+		align_shortcut = "right",
+		shortcut = "u",
+		keymap = { { "n", "t" }, "u", "<cmd>Lazy update<cr>" },
+	},
 }
 
 local config_nvim = {
@@ -82,7 +81,7 @@ local config_nvim = {
 	end,
 	opts = {
 		position = "center",
-    align_shortcut = "right",
+		align_shortcut = "right",
 		shortcut = "c",
 		keymap = { { "n", "t" }, "c", "<cmd>Telescope find_files cwd=~/.config/nvim/<cr>" },
 	},
@@ -96,7 +95,7 @@ local quit = {
 	end,
 	opts = {
 		position = "center",
-    align_shortcut = "right",
+		align_shortcut = "right",
 		shortcut = "qq",
 		keymap = { { "n", "t" }, "qq", "<cmd>quit<cr>" },
 	},
@@ -120,8 +119,8 @@ dashboard.config.layout = {
 	{ type = "padding", val = 4 },
 	find_files,
 	new_file,
-  recent_files,
-  update_plugins,
+	recent_files,
+	update_plugins,
 	config_nvim,
 	quit,
 	{ type = "padding", val = 2 },
