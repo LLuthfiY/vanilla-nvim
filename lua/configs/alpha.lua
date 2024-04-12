@@ -10,8 +10,8 @@ end
 local header = {
 	type = "terminal",
 	command = "viu ~/.config/nvim/static/kalsit_catppuccin.png",
-	height = 22,
-	width = 180,
+	height = 18,
+	width = 150,
 	opts = {
 		redraw = true,
 		position = "center",
@@ -115,9 +115,9 @@ dashboard.section.footer.val = footer()
 -- Send config to alpha
 --
 dashboard.config.layout = {
-	{ type = "padding", val = 2 },
+	{ type = "padding", val = 4 },
 	header,
-	{ type = "padding", val = 6 },
+	{ type = "padding", val = 4 },
 	find_files,
 	new_file,
   recent_files,
