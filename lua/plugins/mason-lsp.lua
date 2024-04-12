@@ -3,11 +3,12 @@ return {
 		"williamboman/mason.nvim",
 		lazy = false,
 		build = ":MasonUpdate",
-		config = function()
-			require("mason").setup({
-				providers = { "mason.providers.client", "mason.providers.registry-api" },
-			})
-		end,
+    config = true,
+		-- config = function()
+		-- 	require("mason").setup({
+		-- 		providers = { "mason.providers.client", "mason.providers.registry-api" },
+		-- 	})
+		-- end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -20,23 +21,7 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-
-			local lspconfig = require("lspconfig")
-			require("mason-lspconfig").setup_handlers({
-				function(server)
-					lspconfig[server].setup({ capabilities = capabilities })
-				end,
-				["tsserver"] = function()
-					lspconfig.tsserver.setup({ settings = { completions = { completeFunctionCalls = true } } })
-				end,
-			})
-
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      require("configs.lsp")
 		end,
 	},
 }
