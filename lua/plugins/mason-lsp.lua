@@ -1,14 +1,12 @@
 return {
 	{
 		"williamboman/mason.nvim",
+    cmd = {"Mason", "MasonInstall", "MasonUpdate", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonInstallAll"},
 		lazy = false,
 		build = ":MasonUpdate",
-    config = true,
-		-- config = function()
-		-- 	require("mason").setup({
-		-- 		providers = { "mason.providers.client", "mason.providers.registry-api" },
-		-- 	})
-		-- end,
+		config = function()
+      require("configs.mason")
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
