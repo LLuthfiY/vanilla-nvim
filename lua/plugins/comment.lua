@@ -9,5 +9,5 @@ return {
       line = "<c-/>"
     }
 	},
-	lazy = false,
+	event = { "BufReadPre", "BufNewFile" },
 }

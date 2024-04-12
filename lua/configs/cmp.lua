@@ -35,6 +35,9 @@ local opts = {
 				cmp.select_next_item()
 			elseif require("luasnip").expand_or_jumpable() then
 				vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+			elseif vim.fn.exists("b:_codeium_completions") ~= 0 then
+				-- accept codeium completion if visible
+				vim.api.nvim_input(vim.fn['codeium#Accept']())
 			else
 				fallback()
 			end
