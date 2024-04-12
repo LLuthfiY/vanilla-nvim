@@ -8,7 +8,7 @@ dashboard.section.terminal.width = 50
 
 local header = {
   type = "terminal",
-  command = "viu -b ~/.config/nvim/static/kalsit_masked.webp",
+  command = "viu ~/.config/nvim/static/kalsit_catppuccin.png",
   height = 25,
   width = 202,
   opts = {
@@ -75,7 +75,7 @@ local quit = {
 dashboard.config.layout = {
   { type = "padding", val = 2 },
   header,
-  { type = "padding", val = 2 },
+  { type = "padding", val = 6 },
   find_files,
   new_file,
   config_nvim,
