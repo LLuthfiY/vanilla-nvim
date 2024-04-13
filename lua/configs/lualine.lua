@@ -1,6 +1,5 @@
 local opts = {
 	options = {
-		theme = "catppuccin-frappe",
 		sections = {
 			lualine_a = {
 				file = 1,
