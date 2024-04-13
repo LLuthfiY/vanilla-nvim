@@ -28,5 +28,4 @@ local opts = {
 		},
 	},
 }
-
 require("neo-tree").setup(opts)

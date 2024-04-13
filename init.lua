@@ -20,4 +20,6 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
+vim.notify = require("notify")
+
 require("configs.theme")

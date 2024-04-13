@@ -30,3 +30,6 @@ vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
 
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.o.number = true
+
+vim.opt.termguicolors = true
+
