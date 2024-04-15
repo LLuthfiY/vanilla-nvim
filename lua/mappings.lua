@@ -43,6 +43,8 @@ map({ "n", "i" }, "<C-a>", "<ESC>ggVG", { desc = "Select All" })
 map({ "n", "i" }, "<C-d>", "<ESC>viws", { desc = "Delete Word" })
 map("i", "<c-j>", "<down>", { desc = "Move cursor down" })
 map("i", "<c-k>", "<up>", { desc = "Move cursor up" })
+map("i", "<c-h>", "<left>", { desc = "Move cursor left" })
+map("i", "<c-l>", "<right>", { desc = "Move cursor right" })
 
 -- buffer
 map({ "n", "i" }, "qw", function()
@@ -82,3 +84,6 @@ map({ "n" }, "<leader>fm", function()
 	require("conform").format()
 	print("File Format with conform")
 end, { desc = "Conform" })
+
+-- code actions
+map({ "n", "v", "i"}, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
