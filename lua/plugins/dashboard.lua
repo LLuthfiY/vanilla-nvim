@@ -6,7 +6,7 @@ return {
 			theme = "doom",
 			preview = {
 				command = "viu ",
-				file_path = "~/.config/nvim/static/kalsit_gruvbox.png",
+				file_path = "~/.config/nvim/static/kaltsit_catppuccin.png",
 				file_height = 18,
 				file_width = 150,
 			},
