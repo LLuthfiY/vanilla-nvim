@@ -1,3 +1,3 @@
-return  {
-  'famiu/bufdelete.nvim'
+return {
+	"famiu/bufdelete.nvim",
 }

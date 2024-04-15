@@ -4,7 +4,7 @@ return {
 	config = function()
 		local notify = require("notify")
 
-		notify.setup{
+		notify.setup({
 			render = "minimal",
 			stages = "fade_in_slide_out",
 			timeout = 3000,
@@ -14,7 +14,7 @@ return {
 			max_width = function()
 				return math.floor(vim.o.columns * 0.75)
 			end,
-		}
+		})
 		vim.notify = notify
 	end,
 }
