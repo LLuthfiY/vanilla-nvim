@@ -5,15 +5,9 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.shell = "zsh"
 vim.opt.whichwrap:append "<>[]hl"
-
-
--- vim.cmd("set expandtab")
--- vim.cmd("set tabstop=2")
--- vim.cmd("set softtabstop=2")
--- vim.cmd("set shiftwidth=2")
-
 vim.opt.swapfile = false
 vim.opt.shortmess:append "sI"
+vim.opt.fillchars = { eob = " " }
 
 vim.o.undofile = true
 vim.o.smartindent = true
