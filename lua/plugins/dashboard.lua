@@ -5,7 +5,7 @@ return {
 		require("dashboard").setup({
 			theme = "doom",
 			preview = {
-				command = "viu -b ",
+				command = "viu ",
 				file_path = "~/.config/nvim/static/kalsit_catppuccin.png",
 				file_height = 18,
 				file_width = 150,
@@ -24,6 +24,12 @@ return {
 						key = "n",
 						icon = "  ",
 					},
+          {
+            desc = "Open Recent File",
+            action = "Telescope oldfiles",
+            key = "r",
+            icon = "  ",
+          },
 					{
 						desc = "Find Text",
 						action = "Telescope live_grep",
