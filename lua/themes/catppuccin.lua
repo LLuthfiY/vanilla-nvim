@@ -30,6 +30,11 @@ return {
 				TelescopeResultsBorder = { fg = palette.base, bg = palette.base },
 				TelescopeResultsNormal = { bg = palette.base },
 				TelescopeResultsTitle = { fg = palette.base, bg = palette.base },
+        TelescopeSelection = { fg = palette.text, bg = palette.surface0 },
+        TelescopeSelectionCaret = { fg = palette.green, bg = palette.surface0 },
+        CmpDocBorder = { fg = palette.surface0, bg = palette.surface0 },
+        CmpDocNormal = { bg = palette.surface0 },
+        
 			},
 		})
 	end,

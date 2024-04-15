@@ -16,6 +16,8 @@ return { "ellisonleao/gruvbox.nvim", priority = 1000 , config = function ()
       TelescopeResultsTitle = { fg = palette.dark1, bg = palette.bright_blue },
       TelescopeSelection = { fg = palette.fg, bg = palette.dark2 },
       TelescopeSelectionCaret = { fg = palette.bright_green,  },
+      CmpDocBorder = { fg = palette.dark2, bg = palette.dark2 },
+      CmpDocNormal = { bg = palette.dark2 },
     }
   })
 end}

@@ -22,7 +22,7 @@ return {
 
 			window = {
 				documentation = {
-					winhighlight = "Normal:CmpDoc",
+					winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,Search:None",
 				},
 			},
 			snippet = {
@@ -30,6 +30,10 @@ return {
 					require("luasnip").lsp_expand(args.body)
 				end,
 			},
+
+      formatting = {
+        format = require("lspkind").cmp_format(),
+      },
 
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
