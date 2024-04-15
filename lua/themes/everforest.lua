@@ -20,9 +20,9 @@ return {
 				hl.TelescopeResultsNormal = { bg = c.bg2 }
 				hl.TelescopeResultsTitle = { fg = c.bg2, bg = c.bg2 }
 				hl.TelescopeSelection = { fg = c.fg, bg = c.bg1 }
-        hl.TelescopeSelectionCaret = { fg = c.green, bg = c.bg1 }
-        hl.CmpDocBorder = { fg = c.bg1, bg = c.bg1 }
-        hl.CmpDocNormal = { bg = c.bg1 }
+				hl.TelescopeSelectionCaret = { fg = c.green, bg = c.bg1 }
+				hl.CmpDocBorder = { fg = c.bg1, bg = c.bg1 }
+				hl.CmpDocNormal = { bg = c.bg1 }
 			end,
 		})
 	end,

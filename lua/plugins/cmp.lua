@@ -31,9 +31,9 @@ return {
 				end,
 			},
 
-      formatting = {
-        format = require("lspkind").cmp_format(),
-      },
+			formatting = {
+				format = require("lspkind").cmp_format(),
+			},
 
 			mapping = {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
