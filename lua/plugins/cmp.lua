@@ -14,6 +14,13 @@ return {
 	config = function()
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
+		local luasnip = require("luasnip")
+
+		local has_words_before = function()
+			unpack = unpack or table.unpack
+			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		end
 
 		local opts = {
 			completion = {
@@ -50,15 +57,23 @@ return {
 
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
+						-- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
 						cmp.select_next_item()
-					elseif require("luasnip").expand_or_jumpable() then
-						vim.fn.feedkeys(
-							vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-							""
-						)
+					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+					-- this way you will only jump inside the snippet region
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
 					elseif vim.fn.exists("b:_codeium_completions") ~= 0 then
-						-- accept codeium completion if visible
-						vim.api.nvim_input(vim.fn["codeium#Accept"]())
+						local text = vim.fn["codeium#Accept"]()
+						-- if string.find(text, "codeium") then
+						if text ~= vim.g.codeium_tab_fallback then
+							vim.api.nvim_input(text)
+						else
+							fallback()
+						end
+					elseif has_words_before() then
+						cmp.complete()
+					elseif vim.fn["vsnip#available"](1) == 1 then
 					else
 						fallback()
 					end

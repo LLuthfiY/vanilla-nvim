@@ -86,4 +86,4 @@ map({ "n" }, "<leader>fm", function()
 end, { desc = "Conform" })
 
 -- code actions
-map({ "n", "v", "i"}, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
