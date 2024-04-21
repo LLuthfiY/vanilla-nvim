@@ -13,6 +13,7 @@ return {
 
 			config = {
 				header = {
+          "",
 					"   ／l、   ",
 					"",
 					"（ﾟ､ ｡ ７    ",
