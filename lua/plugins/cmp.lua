@@ -28,9 +28,9 @@ return {
 			},
 
 			window = {
-        completion = {
-          col_offset = -2,
-        },
+				completion = {
+					col_offset = -2,
+				},
 				documentation = {
 					winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,Search:None",
 					border = "single",
@@ -46,13 +46,23 @@ return {
 				format = require("lspkind").cmp_format({
 					mode = "symbol",
 					show_labelDetails = true,
-          before = function(entry, vim_item)
-            if entry.completion_item.detail then
-              vim_item.menu = entry.completion_item.detail
-              vim_item.abbr = vim_item.abbr .. "        "
-            end
-            return vim_item
-          end,
+					before = function(entry, vim_item)
+						if entry.completion_item.detail then
+							vim_item.menu = entry.completion_item.detail
+						end
+
+						-- make vim_item.menu right aligned
+						if vim_item.menu ~= nil then
+							if string.len(vim_item.menu) > 30 then
+								vim_item.menu = string.sub(vim_item.menu, 1, 13)
+									.. "..."
+									.. string.sub(vim_item.menu, -14)
+							end
+							vim_item.menu = string.format("%30s", vim_item.menu)
+							vim_item.abbr = vim_item.abbr .. "    "
+						end
+						return vim_item
+					end,
 				}),
 				fields = { "kind", "abbr", "menu" },
 			},
