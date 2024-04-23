@@ -28,6 +28,9 @@ return {
 			},
 
 			window = {
+        completion = {
+          col_offset = -2,
+        },
 				documentation = {
 					winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,Search:None",
 					border = "single",
