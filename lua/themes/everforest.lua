@@ -21,8 +21,16 @@ return {
 				hl.TelescopeResultsTitle = { fg = c.bg2, bg = c.bg2 }
 				hl.TelescopeSelection = { fg = c.fg, bg = c.bg1 }
 				hl.TelescopeSelectionCaret = { fg = c.green, bg = c.bg1 }
-				hl.CmpDocBorder = { fg = c.bg1, bg = c.bg1 }
-				hl.CmpDocNormal = { bg = c.bg1 }
+				hl.CmpDocBorder = { fg = c.green, bg = c.bg1 }
+				hl.CmpDocNormal = { bg = c.bg1 , fg = c.fg }
+        hl.NotifyError = { fg = c.red }
+        hl.NotifyErrorBorder = { fg = c.red }
+        hl.NotifyWarning = { fg = c.yellow }
+        hl.NotifyWARNBorder = { fg = c.yellow}
+        hl.NotifyInfo = { fg = c.blue }
+        hl.NotifyINFOBorder = { fg = c.blue }
+        hl.NotifyHint = { fg = c.green }
+        hl.NotifyHINTBorder = { fg = c.green }
 			end,
 		})
 	end,

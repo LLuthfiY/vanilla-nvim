@@ -4,8 +4,10 @@ return {
 	-- lazy = false,
 	priority = 1000,
 	config = function()
-		local palette = require("catppuccin.palettes").get_palette("frappe")
+    local flavour = "frappe"
+		local palette = require("catppuccin.palettes").get_palette(flavour)
 		require("catppuccin").setup({
+      flavour = flavour,
 			integrations = {
 				cmp = true,
 				gitsigns = true,
@@ -32,8 +34,16 @@ return {
 				TelescopeResultsTitle = { fg = palette.base, bg = palette.base },
 				TelescopeSelection = { fg = palette.text, bg = palette.surface0 },
 				TelescopeSelectionCaret = { fg = palette.green, bg = palette.surface0 },
-				CmpDocBorder = { fg = palette.surface0, bg = palette.surface0 },
+				CmpDocBorder = { fg = palette.maroon, bg = palette.surface0 },
 				CmpDocNormal = { bg = palette.surface0 },
+        NotifyError = { fg = palette.red },
+        NotifyERRORBorder = { fg = palette.red },
+        NotifyWarning = { fg = palette.yellow },
+        NotifyWARNBorder = { fg = palette.yellow},
+        NotifyInfo = { fg = palette.blue },
+        NotifyINFOBorder = { fg = palette.blue },
+        NotifyHint = { fg = palette.green },
+        NotifyHINTBorder = { fg = palette.green },
 			},
 		})
 	end,

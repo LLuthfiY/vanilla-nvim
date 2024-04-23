@@ -30,6 +30,7 @@ return {
 			window = {
 				documentation = {
 					winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,Search:None",
+					border = "single",
 				},
 			},
 			snippet = {
@@ -39,7 +40,18 @@ return {
 			},
 
 			formatting = {
-				format = require("lspkind").cmp_format(),
+				format = require("lspkind").cmp_format({
+					mode = "symbol",
+					show_labelDetails = true,
+          before = function(entry, vim_item)
+            if entry.completion_item.detail then
+              vim_item.menu = entry.completion_item.detail
+              vim_item.abbr = vim_item.abbr .. "        "
+            end
+            return vim_item
+          end,
+				}),
+				fields = { "kind", "abbr", "menu" },
 			},
 
 			mapping = {
