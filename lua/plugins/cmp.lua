@@ -10,7 +10,7 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 	},
-	event = "InsertEnter",
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
