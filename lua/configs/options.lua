@@ -12,9 +12,13 @@ vim.opt.fillchars = { eob = " " }
 vim.o.undofile = true
 vim.o.smartindent = true
 vim.o.expandtab = true
+
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
+-- hide cmdline when not in use
+vim.o.cmdheight = 0
+
 
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
