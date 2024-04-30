@@ -51,6 +51,8 @@ map("i", "<c-l>", "<right>", { desc = "Move cursor right" })
 map({ "n", "i" }, "qw", function()
 	require("bufdelete").bufdelete(0, true)
 end, { desc = "Close Buffer" })
+map("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+map("n", "<s-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Buffer" })
 
 -- quit
 map({ "n", "i" }, "<c-q>", "<cmd>q<cr>", { desc = "Quit" })
