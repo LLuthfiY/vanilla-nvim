@@ -7,11 +7,11 @@ return {
 
 			formatters_by_ft = {
 				lua = { "stylua" },
-				typescript = { "prettier" },
-        javascript = { "prettier" },
-        html = { "prettier" },
-        css = { "prettier" },
-				svelte = { "prettier" },
+				typescript = { "biome" },
+        javascript = { "biome" },
+        html = { "prettierd" },
+        css = { "prettierd" },
+				svelte = { "prettierd" },
 			},
 		})
 	end,
