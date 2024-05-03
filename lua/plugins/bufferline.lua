@@ -4,8 +4,12 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
-		require("bufferline").setup({
+    -- get highlight colors
+		local bufferline = require("bufferline")
+		bufferline.setup({
 			options = {
+				style_preset = bufferline.style_preset.minimal,
+				indicator = { style = "icon", icon = "▎" },
 				always_show_bufferline = false,
 				diagnostics = "nvim_lsp",
 				diagnostics_indicator = function(count, level, diagnostics_dict, context)
