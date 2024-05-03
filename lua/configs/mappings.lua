@@ -17,8 +17,9 @@ local lazygit = Terminal:new({
 	},
 })
 
-map("n", ";", "<cmd>FineCmdline<CR>", { noremap = true, desc = "CMD enter command mode" })
-map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true, desc = "CMD enter command mode" })
+-- map("n", ";", "<cmd>FineCmdline<CR>", { noremap = true, desc = "CMD enter command mode" })
+-- map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true, desc = "CMD enter command mode" })
+map("n", ";", ":")
 
 map("n", "<leader>fm", function()
 	require("conform").format()
@@ -90,3 +91,5 @@ end, { desc = "Conform" })
 
 -- code actions
 map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+
+

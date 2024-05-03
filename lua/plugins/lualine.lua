@@ -42,23 +42,25 @@ return {
 		end
 		require("lualine").setup({
 			options = {
-				theme = "auto",
 				component_separators = { left = "|", right = "|" },
 				section_separators = { left = "", right = "" }, -- make it square
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = {
-						"branch",
-						"filename",
-						"diff",
-						{
-							"GetCurrentDiagnosticString()",
-						},
+			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = {
+					"branch",
+					"filename",
+					"diff",
+					{
+						"GetCurrentDiagnosticString()",
 					},
-					lualine_c = { "filename" },
-					lualine_x = { "encoding", "fileformat", "filetype" },
-					lualine_y = { "progress" },
-					lualine_z = { "location" },
+				},
+				lualine_c = {
+					{
+						require("noice").api.statusline.mode.get,
+						cond = require("noice").api.statusline.mode.has,
+						color = { fg = "#ff9e64" },
+					},
 				},
 			},
 		})

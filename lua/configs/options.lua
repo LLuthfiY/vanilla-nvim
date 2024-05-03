@@ -17,7 +17,7 @@ vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 -- hide cmdline when not in use
-vim.o.cmdheight = 0
+-- vim.o.cmdheight = 0
 
 
 -- Navigate vim panes better
