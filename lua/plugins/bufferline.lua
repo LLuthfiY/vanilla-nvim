@@ -5,6 +5,10 @@ return {
 	dependencies = "nvim-tree/nvim-web-devicons",
 	config = function()
     -- get highlight colors
+    local getHL = vim.api.nvim_get_hl
+    local color = {
+      background_fill = getHL(0, {name= "TelescopeNormal"}).bg,
+    }
 		local bufferline = require("bufferline")
 		bufferline.setup({
 			options = {
@@ -29,6 +33,25 @@ return {
 					},
 				},
 			},
+      highlights = {
+        fill = { bg = color.background_fill },
+        background = { bg = color.background_fill },
+        tab = { bg = color.background_fill },
+        close_button = { bg = color.background_fill },
+        diagnostic = { bg = color.background_fill },
+        diagnostic_visible = { bg = color.background_fill },
+        hint = { bg = color.background_fill },
+        hint_diagnostic = { bg = color.background_fill },
+        info = { bg = color.background_fill },
+        info_diagnostic = { bg = color.background_fill },
+        warning = { bg = color.background_fill },
+        warning_diagnostic = { bg = color.background_fill },
+        error = { bg = color.background_fill },
+        error_diagnostic = { bg = color.background_fill },
+        modified = { bg = color.background_fill },
+        duplicate = { bg = color.background_fill },
+        separator = { bg = color.background_fill },
+      }
 		})
 	end,
 }
