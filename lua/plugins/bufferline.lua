@@ -13,7 +13,7 @@ return {
 		bufferline.setup({
 			options = {
 				style_preset = bufferline.style_preset.minimal,
-				indicator = { style = "icon", icon = "▎" },
+				indicator = { style = "none", icon = "▎" },
 				always_show_bufferline = false,
 				diagnostics = "nvim_lsp",
 				diagnostics_indicator = function(count, level, diagnostics_dict, context)
