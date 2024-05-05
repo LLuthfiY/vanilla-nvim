@@ -30,7 +30,7 @@ return {
 			window = {
 				completion = {
 					col_offset = -2,
-          -- winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,Search:None",
+					-- winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,Search:None",
 				},
 				documentation = {
 					winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,Search:None",
