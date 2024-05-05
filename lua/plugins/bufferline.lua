@@ -7,7 +7,7 @@ return {
     -- get highlight colors
     local getHL = vim.api.nvim_get_hl
     local color = {
-      background = getHL(0, {name= "TelescopeNormal"}).bg,
+      background = getHL(0, {name= "NormalFloat"}).bg,
     }
 		local bufferline = require("bufferline")
 		bufferline.setup({
