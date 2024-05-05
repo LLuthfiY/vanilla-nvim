@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -------------------------------- Set Theme -------------------------------------
 --------------------------------------------------------------------------------
-local theme = "tokyonight"
+local theme = "catppuccin-frappe"
 --------------------------------------------------------------------------------
 vim.cmd("colorscheme " .. theme)
 
@@ -45,8 +45,6 @@ if theme == "nordic" then
   set_hl(0, "TelescopePromptPrefix", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
 	set_hl(0, "TelescopeResultsBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	set_hl(0, "TelescopePreviewBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
-
-
 	-- set_hl(0, "CmpNormal", { bg = color["Comment"].fg, fg = color["Comment"].fg })
 end
 
@@ -54,4 +52,8 @@ if theme == "gruvbox" then
 	set_hl(0, "TelescopePreviewBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	set_hl(0, "TelescopePromptBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	set_hl(0, "TelescopeResultsBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
+end
+
+if theme == "kanagawa" then
+  set_hl(0, "NoiceCmdLineIcon", { bg = color["NormalFloat"].bg })
 end
