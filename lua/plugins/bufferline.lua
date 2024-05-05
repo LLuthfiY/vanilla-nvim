@@ -7,7 +7,7 @@ return {
     -- get highlight colors
     local getHL = vim.api.nvim_get_hl
     local color = {
-      background_fill = getHL(0, {name= "TelescopeNormal"}).bg,
+      background = getHL(0, {name= "TelescopeNormal"}).bg,
     }
 		local bufferline = require("bufferline")
 		bufferline.setup({
@@ -34,23 +34,23 @@ return {
 				},
 			},
       highlights = {
-        fill = { bg = color.background_fill },
-        background = { bg = color.background_fill },
-        tab = { bg = color.background_fill },
-        close_button = { bg = color.background_fill },
-        diagnostic = { bg = color.background_fill },
-        diagnostic_visible = { bg = color.background_fill },
-        hint = { bg = color.background_fill },
-        hint_diagnostic = { bg = color.background_fill },
-        info = { bg = color.background_fill },
-        info_diagnostic = { bg = color.background_fill },
-        warning = { bg = color.background_fill },
-        warning_diagnostic = { bg = color.background_fill },
-        error = { bg = color.background_fill },
-        error_diagnostic = { bg = color.background_fill },
-        modified = { bg = color.background_fill },
-        duplicate = { bg = color.background_fill },
-        separator = { bg = color.background_fill },
+        fill = { bg = color.background },
+        background = { bg = color.background },
+        tab = { bg = color.background },
+        close_button = { bg = color.background },
+        diagnostic = { bg = color.background },
+        diagnostic_visible = { bg = color.background },
+        hint = { bg = color.background },
+        hint_diagnostic = { bg = color.background },
+        info = { bg = color.background },
+        info_diagnostic = { bg = color.background },
+        warning = { bg = color.background },
+        warning_diagnostic = { bg = color.background },
+        error = { bg = color.background },
+        error_diagnostic = { bg = color.background },
+        modified = { bg = color.background },
+        duplicate = { bg = color.background },
+        separator = { bg = color.background },
       }
 		})
 	end,

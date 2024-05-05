@@ -12,5 +12,14 @@ return {
 		terminal_mappings = true,
 		start_in_insert = true,
 		close_on_exit = true,
+		highlights = {
+			NormalFloat = {
+  			-- guibg = vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg,
+        link = "NormalFloat",
+			},
+      FloatBorder = {
+        link = "ToggleTermBorder",
+      }
+		},
 	},
 }

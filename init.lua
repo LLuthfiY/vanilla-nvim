@@ -22,5 +22,4 @@ require("lazy").setup({
 }, lazy_config)
 
 vim.notify = require("notify")
-
 require("configs.theme")
