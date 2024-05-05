@@ -38,7 +38,11 @@ set_hl(0, "NotifyHINTBorder", { fg = color["DiagnosticHint"].fg })
 -- ToggleTerm
 set_hl(0, "ToggleTermBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 
---custom
+
+--------------------------------------------------------------------------------
+--------------------------- Set custom highlights ------------------------------
+--------------------------------------------------------------------------------
+
 if theme == "nordic" then
 	set_hl(0, "TelescopePromptBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	set_hl(0, "TelescopePromptNormal", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
