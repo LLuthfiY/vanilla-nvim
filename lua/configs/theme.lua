@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -------------------------------- Set Theme -------------------------------------
 --------------------------------------------------------------------------------
-local theme = "catppuccin-frappe"
+local theme = "nord"
 --------------------------------------------------------------------------------
 vim.cmd("colorscheme " .. theme)
 
@@ -9,6 +9,10 @@ local get_hl = vim.api.nvim_get_hl
 local set_hl = vim.api.nvim_set_hl
 
 local color = get_hl(0, {})
+
+--------------------------------------------------------------------------------
+------------------------------- Set highlights ---------------------------------
+--------------------------------------------------------------------------------
 
 -- Telescope
 set_hl(0, "TelescopeNormal", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
@@ -38,15 +42,14 @@ set_hl(0, "NotifyHINTBorder", { fg = color["DiagnosticHint"].fg })
 -- ToggleTerm
 set_hl(0, "ToggleTermBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 
-
 --------------------------------------------------------------------------------
 --------------------------- Set custom highlights ------------------------------
 --------------------------------------------------------------------------------
 
-if theme == "nordic" then
+if theme == "nord" then
 	set_hl(0, "TelescopePromptBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	set_hl(0, "TelescopePromptNormal", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
-  set_hl(0, "TelescopePromptPrefix", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
+	set_hl(0, "TelescopePromptPrefix", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
 	set_hl(0, "TelescopeResultsBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	set_hl(0, "TelescopePreviewBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 	-- set_hl(0, "CmpNormal", { bg = color["Comment"].fg, fg = color["Comment"].fg })
@@ -59,5 +62,5 @@ if theme == "gruvbox" then
 end
 
 if theme == "kanagawa" then
-  set_hl(0, "NoiceCmdLineIcon", { bg = color["NormalFloat"].bg })
+	set_hl(0, "NoiceCmdLineIcon", { bg = color["NormalFloat"].bg })
 end
