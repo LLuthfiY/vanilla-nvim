@@ -45,31 +45,26 @@ return {
 			},
 
 			formatting = {
-				-- format = require("lspkind").cmp_format({
-				-- 	mode = "symbol",
-				-- 	show_labelDetails = true,
-				-- 	before = function(entry, vim_item)
-				-- 		if entry.completion_item.detail then
-				-- 			vim_item.menu = entry.completion_item.detail
-				-- 		end
-				--
-				-- 		-- make vim_item.menu right aligned
-				-- 		if vim_item.menu ~= nil then
-				-- 			if string.len(vim_item.menu) > 30 then
-				-- 				vim_item.menu = string.sub(vim_item.menu, 1, 13)
-				-- 					.. "..."
-				-- 					.. string.sub(vim_item.menu, -14)
-				-- 			end
-				-- 			vim_item.menu = string.format("%30s", vim_item.menu)
-				-- 			vim_item.abbr = vim_item.abbr .. "    "
-				-- 			vim_item.kind = " " .. vim_item.kind .. " "
-				-- 		end
-				-- 		return vim_item
-				-- 	end,
-				-- }),
 				format = function(entry, vim_item)
-					local lspkind_format =
-						require("lspkind").cmp_format({ mode = "symbol", show_labelDetails = true })(entry, vim_item)
+					local contrast_color = function(hexColor)
+						-- hex to rgb
+						hexColor = string.gsub(hexColor, "#", "")
+						local r, g, b =
+							tonumber("0x" .. hexColor:sub(1, 2)),
+							tonumber("0x" .. hexColor:sub(3, 4)),
+							tonumber("0x" .. hexColor:sub(5, 6))
+						if (r * 0.299 + g * 0.587 + b * 0.114) > 186 then
+							return vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg
+						else
+							return vim.api.nvim_get_hl(0, { name = "NormalFloat" }).fg
+						end
+					end
+
+					local kind = vim_item.kind
+					local lspkind_format = require("lspkind").cmp_format({
+						mode = "symbol",
+						show_labelDetails = true,
+					})(entry, vim_item)
 					lspkind_format.kind = " " .. lspkind_format.kind .. " "
 					if entry.completion_item.detail then
 						lspkind_format.menu = entry.completion_item.detail
@@ -84,6 +79,19 @@ return {
 						end
 						lspkind_format.menu = string.format("%30s", lspkind_format.menu)
 						lspkind_format.abbr = lspkind_format.abbr .. "    "
+					end
+
+					if kind == "Color" and entry.completion_item.documentation then
+						local _, _, r, g, b =
+							string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
+						if r then
+							local color = string.format("%02x%02x%02x", r, g, b)
+							local group = "TailwindColor" .. color
+							if vim.fn.hlID(group) < 1 then
+								vim.api.nvim_set_hl(0, group, { bg = "#" .. color, fg = contrast_color(color) })
+							end
+							lspkind_format.kind_hl_group = group
+						end
 					end
 
 					return lspkind_format
