@@ -22,7 +22,7 @@ local lazygit = Terminal:new({
 map("n", ";", ":")
 
 map("n", "<leader>fm", function()
-	require("conform").format { lsp_fallback = true}
+	require("conform").format({ lsp_fallback = true })
 end, { desc = "File Format with conform" })
 
 map({ "n", "i", "v" }, "qq", "<ESC>", { desc = "Escape insert mode" })
@@ -91,5 +91,3 @@ end, { desc = "Conform" })
 
 -- code actions
 map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
-
-

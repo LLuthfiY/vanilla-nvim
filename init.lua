@@ -8,10 +8,6 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-vim.schedule(function()
-	require("configs.mappings")
-end)
-
 local lazy_config = require("configs.lazy")
 
 -- load plugins
@@ -20,4 +16,7 @@ require("lazy").setup({
 	{ import = "themes" },
 }, lazy_config)
 
+vim.schedule(function()
+	require("configs.mappings")
+end)
 require("configs.theme")
