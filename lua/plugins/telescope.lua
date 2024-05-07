@@ -6,7 +6,7 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		local actions = require("telescope.actions")
-    local telescope = require("telescope")
+		local telescope = require("telescope")
 		telescope.setup({
 			defaults = {
 				prompt_prefix = "  ",
@@ -17,6 +17,8 @@ return {
 					i = {
 						["<c-j>"] = actions.move_selection_next,
 						["<c-k>"] = actions.move_selection_previous,
+						["<esc>"] = actions.close,
+						["qq"] = actions.close,
 					},
 				},
 			},
@@ -30,6 +32,6 @@ return {
 				},
 			},
 		})
-    telescope.load_extension("fzf")
+		telescope.load_extension("fzf")
 	end,
 }
