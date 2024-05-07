@@ -30,10 +30,11 @@ return {
 			window = {
 				completion = {
 					col_offset = -2,
+					side_padding = 0,
 					-- winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,Search:None",
 				},
 				documentation = {
-					winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder,Search:None",
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
 					border = "single",
 				},
 			},
@@ -44,27 +45,49 @@ return {
 			},
 
 			formatting = {
-				format = require("lspkind").cmp_format({
-					mode = "symbol",
-					show_labelDetails = true,
-					before = function(entry, vim_item)
-						if entry.completion_item.detail then
-							vim_item.menu = entry.completion_item.detail
-						end
+				-- format = require("lspkind").cmp_format({
+				-- 	mode = "symbol",
+				-- 	show_labelDetails = true,
+				-- 	before = function(entry, vim_item)
+				-- 		if entry.completion_item.detail then
+				-- 			vim_item.menu = entry.completion_item.detail
+				-- 		end
+				--
+				-- 		-- make vim_item.menu right aligned
+				-- 		if vim_item.menu ~= nil then
+				-- 			if string.len(vim_item.menu) > 30 then
+				-- 				vim_item.menu = string.sub(vim_item.menu, 1, 13)
+				-- 					.. "..."
+				-- 					.. string.sub(vim_item.menu, -14)
+				-- 			end
+				-- 			vim_item.menu = string.format("%30s", vim_item.menu)
+				-- 			vim_item.abbr = vim_item.abbr .. "    "
+				-- 			vim_item.kind = " " .. vim_item.kind .. " "
+				-- 		end
+				-- 		return vim_item
+				-- 	end,
+				-- }),
+				format = function(entry, vim_item)
+					local lspkind_format =
+						require("lspkind").cmp_format({ mode = "symbol", show_labelDetails = true })(entry, vim_item)
+					lspkind_format.kind = " " .. lspkind_format.kind .. " "
+					if entry.completion_item.detail then
+						lspkind_format.menu = entry.completion_item.detail
+					end
 
-						-- make vim_item.menu right aligned
-						if vim_item.menu ~= nil then
-							if string.len(vim_item.menu) > 30 then
-								vim_item.menu = string.sub(vim_item.menu, 1, 13)
-									.. "..."
-									.. string.sub(vim_item.menu, -14)
-							end
-							vim_item.menu = string.format("%30s", vim_item.menu)
-							vim_item.abbr = vim_item.abbr .. "    "
+					-- make lspkind_format.menu right aligned
+					if lspkind_format.menu ~= nil then
+						if string.len(lspkind_format.menu) > 30 then
+							lspkind_format.menu = string.sub(lspkind_format.menu, 1, 13)
+								.. "..."
+								.. string.sub(lspkind_format.menu, -14)
 						end
-						return vim_item
-					end,
-				}),
+						lspkind_format.menu = string.format("%30s", lspkind_format.menu)
+						lspkind_format.abbr = lspkind_format.abbr .. "    "
+					end
+
+					return lspkind_format
+				end,
 				fields = { "kind", "abbr", "menu" },
 			},
 

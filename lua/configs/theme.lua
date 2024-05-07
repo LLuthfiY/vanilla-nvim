@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -------------------------------- Set Theme -------------------------------------
 --------------------------------------------------------------------------------
-local theme = "nord"
+local theme = "catppuccin"
 --------------------------------------------------------------------------------
 vim.cmd("colorscheme " .. theme)
 
@@ -9,6 +9,16 @@ local get_hl = vim.api.nvim_get_hl
 local set_hl = vim.api.nvim_set_hl
 
 local color = get_hl(0, {})
+
+local setCmpColors = function(hlName)
+	if color[hlName] then
+		if color[hlName].link then
+			set_hl(0, hlName, { bg = color[color[hlName].link].fg, fg = color["NormalFloat"].bg })
+		else
+			set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg })
+		end
+	end
+end
 
 --------------------------------------------------------------------------------
 ------------------------------- Set highlights ---------------------------------
@@ -28,6 +38,32 @@ set_hl(0, "TelescopePreviewNormal", { bg = color["NormalFloat"].bg, fg = color["
 -- Cmp
 set_hl(0, "CmpDocBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 set_hl(0, "CmpDocNormal", { bg = color["NormalFloat"].bg })
+
+setCmpColors("CmpItemKind")
+setCmpColors("CmpItemKindClass")
+setCmpColors("CmpItemKindConstant")
+setCmpColors("CmpItemKindConstructor")
+setCmpColors("CmpItemKindEnum")
+setCmpColors("CmpItemKindEnumMember")
+setCmpColors("CmpItemKindEvent")
+setCmpColors("CmpItemKindField")
+setCmpColors("CmpItemKindFile")
+setCmpColors("CmpItemKindFolder")
+setCmpColors("CmpItemKindFunction")
+setCmpColors("CmpItemKindInterface")
+setCmpColors("CmpItemKindKeyword")
+setCmpColors("CmpItemKindMethod")
+setCmpColors("CmpItemKindModule")
+setCmpColors("CmpItemKindOperator")
+setCmpColors("CmpItemKindProperty")
+setCmpColors("CmpItemKindReference")
+setCmpColors("CmpItemKindSnippet")
+setCmpColors("CmpItemKindStruct")
+setCmpColors("CmpItemKindTypeParameter")
+setCmpColors("CmpItemKindUnit")
+setCmpColors("CmpItemKindValue")
+setCmpColors("CmpItemKindVariable")
+setCmpColors("CmpItemKindText")
 
 -- Notify
 set_hl(0, "NotifyError", { fg = color["DiagnosticError"].fg })
