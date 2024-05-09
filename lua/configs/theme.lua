@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -------------------------------- Set Theme -------------------------------------
 --------------------------------------------------------------------------------
-local theme = "catppuccin"
+local theme = "poimandres"
 
 --------------------------------------------------------------------------------
 ------------------------------ Set up Variables --------------------------------
@@ -16,9 +16,9 @@ local color = get_hl(0, {})
 local setCmpColors = function(hlName)
 	if color[hlName] then
 		if color[hlName].link then
-			set_hl(0, hlName, { bg = color[color[hlName].link].fg, fg = color["NormalFloat"].bg })
+			set_hl(0, hlName, { bg = color[color[hlName].link].fg, fg = color["NormalFloat"].bg, bold = true })
 		else
-			set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg })
+			set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
 		end
 	end
 end

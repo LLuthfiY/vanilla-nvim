@@ -91,3 +91,8 @@ end, { desc = "Conform" })
 
 -- code actions
 map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+
+-- barbeque
+map({ "n", "i" }, "<c-d>", function()
+	require("barbecue.ui.toggle").toggle()
+end, { desc = "Toggle Barbecue" })
