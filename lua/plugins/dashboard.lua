@@ -13,7 +13,7 @@ return {
 
 			config = {
 				header = {
-          "",
+					"",
 					"   ／l、   ",
 					"",
 					"（ﾟ､ ｡ ７    ",
@@ -21,7 +21,7 @@ return {
 					"   l  ~ヽ   ",
 					"",
 					"   じしf_,)ノ",
-          ""
+					"",
 				},
 				center = {
 					{
@@ -29,6 +29,12 @@ return {
 						action = "Telescope find_files",
 						key = "f",
 						icon = "  ",
+					},
+					{
+						desc = "Load Session",
+						action = [[lua require("persistence").load()]],
+						key = "l",
+						icon = "  ",
 					},
 					{
 						desc = "New File",
