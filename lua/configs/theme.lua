@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -------------------------------- Set Theme -------------------------------------
 --------------------------------------------------------------------------------
-local theme = "no-clown-fiesta"
+local theme = "catppuccin"
 
 --------------------------------------------------------------------------------
 ------------------------------ Set up Variables --------------------------------
@@ -13,12 +13,28 @@ local set_hl = vim.api.nvim_set_hl
 
 local color = get_hl(0, {})
 
+local function get_hl_link(hlName)
+	if color[hlName] then
+		if color[hlName].link then
+			return get_hl_link(color[hlName].link)
+		else
+			return color[hlName]
+		end
+	else
+		return color["CmpItemKind"] or color["CmpItemKindDefault"]
+	end
+end
+
 local setCmpColors = function(hlName)
 	if color[hlName] then
 		if color[hlName].link then
-			set_hl(0, hlName, { bg = color[color[hlName].link].fg, fg = color["NormalFloat"].bg, bold = true })
+			local link = get_hl_link(color[hlName].link)
+			vim.notify(vim.inspect(link))
+			set_hl(0, hlName, { bg = link.fg, fg = color["NormalFloat"].bg, bold = true })
 		else
-			set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
+			if color[hlName].fg then
+				set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
+			end
 		end
 	end
 end
