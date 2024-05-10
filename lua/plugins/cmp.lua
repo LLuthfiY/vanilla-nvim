@@ -15,6 +15,8 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		local config = require("configs.theme")
+		local completionStyle = require("util.ui.completionStyle")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -46,55 +48,21 @@ return {
 
 			formatting = {
 				format = function(entry, vim_item)
-					local contrast_color = function(hexColor)
-						-- hex to rgb
-						hexColor = string.gsub(hexColor, "#", "")
-						local r, g, b =
-							tonumber("0x" .. hexColor:sub(1, 2)),
-							tonumber("0x" .. hexColor:sub(3, 4)),
-							tonumber("0x" .. hexColor:sub(5, 6))
-						if (r * 0.299 + g * 0.587 + b * 0.114) > 186 then
-							return vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg
-						else
-							return vim.api.nvim_get_hl(0, { name = "NormalFloat" }).fg
-						end
-					end
-
-					local kind = vim_item.kind
-					local lspkind_format = require("lspkind").cmp_format({
-						mode = "symbol",
-						show_labelDetails = true,
-					})(entry, vim_item)
-					lspkind_format.kind = " " .. lspkind_format.kind .. " "
 					if entry.completion_item.detail then
-						lspkind_format.menu = entry.completion_item.detail
+						vim_item.menu = entry.completion_item.detail
 					end
 
-					-- make lspkind_format.menu right aligned
-					if lspkind_format.menu ~= nil then
-						if string.len(lspkind_format.menu) > 30 then
-							lspkind_format.menu = string.sub(lspkind_format.menu, 1, 13)
-								.. "..."
-								.. string.sub(lspkind_format.menu, -14)
-						end
-						lspkind_format.menu = string.format("%30s", lspkind_format.menu)
-						lspkind_format.abbr = lspkind_format.abbr .. "    "
-					end
-
-					if kind == "Color" and entry.completion_item.documentation then
-						local _, _, r, g, b =
-							string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
-						if r then
-							local color = string.format("%02x%02x%02x", r, g, b)
-							local group = "TailwindColor" .. color
-							if vim.fn.hlID(group) < 1 then
-								vim.api.nvim_set_hl(0, group, { bg = "#" .. color, fg = contrast_color(color) })
-							end
-							lspkind_format.kind_hl_group = group
-						end
-					end
-
-					return lspkind_format
+					local width = config.cmpStyle.menu.width or 30
+					local align = config.cmpStyle.menu.align or "left"
+					vim_item = completionStyle.menu.setAlign(entry, vim_item, align, width)
+					vim_item = completionStyle.kind.box(entry, vim_item)
+					vim_item = completionStyle.abbr.setSpaces(
+						entry,
+						vim_item,
+						config.cmpStyle.abbr.leftSpaces,
+						config.cmpStyle.abbr.rightSpaces
+					)
+					return vim_item
 				end,
 				fields = { "kind", "abbr", "menu" },
 			},

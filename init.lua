@@ -19,4 +19,9 @@ require("lazy").setup({
 vim.schedule(function()
 	require("configs.mappings")
 end)
-require("configs.theme")
+
+local colortheme = require("configs.theme").theme
+local colorscheme = require("util.ui.colorscheme")
+
+colorscheme.setColorScheme(colortheme)
+colorscheme.SetHighlight(colortheme)
