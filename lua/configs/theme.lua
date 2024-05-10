@@ -11,7 +11,7 @@ local theme = "poimandres"
 
 local cmpStyle = {
 	fields = { "kind", "abbr", "menu" },
-	kind = "box",
+	kind = "icon",
 	menu = {
 		align = "right",
 	},

@@ -1,36 +1,35 @@
 return {
 	SetHighlight = function(theme)
-		local theme = theme or "catppuccin"
+		theme = theme or "catppuccin"
 		local get_hl = vim.api.nvim_get_hl
 		local set_hl = vim.api.nvim_set_hl
 
 		local color = get_hl(0, {})
 
-		local function get_hl_link(hlName)
-			if color[hlName] then
-				if color[hlName].link then
-					return get_hl_link(color[hlName].link)
-				else
-					return color[hlName]
-				end
-			else
-				return color["CmpItemKind"] or color["CmpItemKindDefault"]
-			end
-		end
-
-		local setCmpColors = function(hlName)
-			if color[hlName] then
-				if color[hlName].link then
-					local link = get_hl_link(color[hlName].link)
-					vim.notify(vim.inspect(link))
-					set_hl(0, hlName, { bg = link.fg, fg = color["NormalFloat"].bg, bold = true })
-				else
-					if color[hlName].fg then
-						set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
-					end
-				end
-			end
-		end
+		-- local function get_hl_link(hlName)
+		-- 	if color[hlName] then
+		-- 		if color[hlName].link then
+		-- 			return get_hl_link(color[hlName].link)
+		-- 		else
+		-- 			return color[hlName]
+		-- 		end
+		-- 	else
+		-- 		return color["CmpItemKind"] or color["CmpItemKindDefault"]
+		-- 	end
+		-- end
+		--
+		-- local setCmpColors = function(hlName)
+		-- 	if color[hlName] then
+		-- 		if color[hlName].link then
+		-- 			local link = get_hl_link(color[hlName].link)
+		-- 			set_hl(0, hlName, { bg = link.fg, fg = color["NormalFloat"].bg, bold = true })
+		-- 		else
+		-- 			if color[hlName].fg then
+		-- 				set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
+		-- 			end
+		-- 		end
+		-- 	end
+		-- end
 		--------------------------------------------------------------------------------
 		------------------------------- Set highlights ---------------------------------
 		--------------------------------------------------------------------------------
@@ -50,31 +49,31 @@ return {
 		set_hl(0, "CmpDocBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 		set_hl(0, "CmpDocNormal", { bg = color["NormalFloat"].bg })
 
-		setCmpColors("CmpItemKind")
-		setCmpColors("CmpItemKindClass")
-		setCmpColors("CmpItemKindConstant")
-		setCmpColors("CmpItemKindConstructor")
-		setCmpColors("CmpItemKindEnum")
-		setCmpColors("CmpItemKindEnumMember")
-		setCmpColors("CmpItemKindEvent")
-		setCmpColors("CmpItemKindField")
-		setCmpColors("CmpItemKindFile")
-		setCmpColors("CmpItemKindFolder")
-		setCmpColors("CmpItemKindFunction")
-		setCmpColors("CmpItemKindInterface")
-		setCmpColors("CmpItemKindKeyword")
-		setCmpColors("CmpItemKindMethod")
-		setCmpColors("CmpItemKindModule")
-		setCmpColors("CmpItemKindOperator")
-		setCmpColors("CmpItemKindProperty")
-		setCmpColors("CmpItemKindReference")
-		setCmpColors("CmpItemKindSnippet")
-		setCmpColors("CmpItemKindStruct")
-		setCmpColors("CmpItemKindTypeParameter")
-		setCmpColors("CmpItemKindUnit")
-		setCmpColors("CmpItemKindValue")
-		setCmpColors("CmpItemKindVariable")
-		setCmpColors("CmpItemKindText")
+		-- setCmpColors("CmpItemKind")
+		-- setCmpColors("CmpItemKindClass")
+		-- setCmpColors("CmpItemKindConstant")
+		-- setCmpColors("CmpItemKindConstructor")
+		-- setCmpColors("CmpItemKindEnum")
+		-- setCmpColors("CmpItemKindEnumMember")
+		-- setCmpColors("CmpItemKindEvent")
+		-- setCmpColors("CmpItemKindField")
+		-- setCmpColors("CmpItemKindFile")
+		-- setCmpColors("CmpItemKindFolder")
+		-- setCmpColors("CmpItemKindFunction")
+		-- setCmpColors("CmpItemKindInterface")
+		-- setCmpColors("CmpItemKindKeyword")
+		-- setCmpColors("CmpItemKindMethod")
+		-- setCmpColors("CmpItemKindModule")
+		-- setCmpColors("CmpItemKindOperator")
+		-- setCmpColors("CmpItemKindProperty")
+		-- setCmpColors("CmpItemKindReference")
+		-- setCmpColors("CmpItemKindSnippet")
+		-- setCmpColors("CmpItemKindStruct")
+		-- setCmpColors("CmpItemKindTypeParameter")
+		-- setCmpColors("CmpItemKindUnit")
+		-- setCmpColors("CmpItemKindValue")
+		-- setCmpColors("CmpItemKindVariable")
+		-- setCmpColors("CmpItemKindText")
 
 		-- Notify
 		set_hl(0, "NotifyError", { fg = color["DiagnosticError"].fg })

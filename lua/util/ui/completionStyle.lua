@@ -38,9 +38,39 @@ local icons = {
 	TypeParameter = "",
 }
 
+local get_hl = vim.api.nvim_get_hl
+local set_hl = vim.api.nvim_set_hl
+
+local colorHl = get_hl(0, {})
+
+local function get_hl_link(hlName)
+	if colorHl[hlName] then
+		if colorHl[hlName].link then
+			return get_hl_link(colorHl[hlName].link)
+		else
+			return colorHl[hlName]
+		end
+	else
+		return colorHl["CmpItemKind"] or colorHl["CmpItemKindDefault"]
+	end
+end
+
+local setCmpcolor = function(hlName)
+	if colorHl[hlName] then
+		if colorHl[hlName].link then
+			local link = get_hl_link(colorHl[hlName].link)
+			set_hl(0, hlName, { bg = link.fg, fg = colorHl["NormalFloat"].bg, bold = true })
+		else
+			if colorHl[hlName].fg then
+				set_hl(0, hlName, { bg = colorHl[hlName].fg, fg = colorHl["NormalFloat"].bg, bold = true })
+			end
+		end
+	end
+end
+
 return {
 	kind = {
-		box = function(entry, vim_item)
+		iconBackground = function(entry, vim_item)
 			if vim_item.kind == "Color" and entry.completion_item.documentation then
 				local _, _, r, g, b = string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
 				if r then
@@ -51,8 +81,29 @@ return {
 					end
 					vim_item.kind_hl_group = group
 				end
+			else
+				setCmpcolor("CmpItemKind" .. vim_item.kind)
 			end
 			vim_item.kind = " " .. icons[vim_item.kind] .. " "
+			return vim_item
+		end,
+		icon = function(entry, vim_item)
+			if vim_item.kind == "Color" and entry.completion_item.documentation then
+				local _, _, r, g, b = string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
+				if r then
+					local color = string.format("%02x%02x%02x", r, g, b)
+					local group = "TailwindColor" .. color
+					if vim.fn.hlID(group) < 1 then
+						vim.api.nvim_set_hl(0, group, { fg = "#" .. color })
+					end
+					vim_item.kind_hl_group = group
+				end
+				vim_item.kind = "  "
+			else
+				-- setCmpcolor("CmpItemKind" .. vim_item.kind)
+				vim_item.kind = " " .. icons[vim_item.kind] .. " "
+			end
+
 			return vim_item
 		end,
 	},
