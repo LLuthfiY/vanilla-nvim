@@ -20,8 +20,8 @@ vim.schedule(function()
 	require("configs.mappings")
 end)
 
-local colortheme = require("configs.theme").theme
+local configUI = require("configs.UI")
 local colorscheme = require("util.ui.colorscheme")
 
-colorscheme.setColorScheme(colortheme)
-colorscheme.SetHighlight(colortheme)
+colorscheme.setColorScheme(configUI.theme)
+colorscheme.SetHighlight(configUI.theme, configUI.cmpStyle.kind.coloredBackground)

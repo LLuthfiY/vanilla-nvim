@@ -1,10 +1,67 @@
 return {
-	SetHighlight = function(theme)
+	SetHighlight = function(theme, coloredBackground)
+		coloredBackground = coloredBackground or false
+
 		theme = theme or "catppuccin"
+
 		local get_hl = vim.api.nvim_get_hl
 		local set_hl = vim.api.nvim_set_hl
 
 		local color = get_hl(0, {})
+
+		local function get_hl_link(hlName)
+			if color[hlName] then
+				if color[hlName].link then
+					return get_hl_link(color[hlName].link)
+				else
+					return color[hlName]
+				end
+			else
+				return color["CmpItemKind"] or color["CmpItemKindDefault"]
+			end
+		end
+
+		local setCmpcolor = function(hlName)
+			if color[hlName] then
+				if color[hlName].link then
+					local link = get_hl_link(color[hlName].link)
+					set_hl(0, hlName, { bg = link.fg, fg = color["NormalFloat"].bg, bold = true })
+				else
+					if color[hlName].fg then
+						set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
+					end
+				end
+			end
+		end
+
+		local kidns = {
+			"",
+			"Text",
+			"Method",
+			"Function",
+			"Constructor",
+			"Field",
+			"Variable",
+			"Class",
+			"Interface",
+			"Module",
+			"Property",
+			"Unit",
+			"Value",
+			"Enum",
+			"Keyword",
+			"Snippet",
+			"Color",
+			"File",
+			"Reference",
+			"Folder",
+			"EnumMember",
+			"Constant",
+			"Struct",
+			"Event",
+			"Operator",
+			"TypeParameter",
+		}
 
 		--------------------------------------------------------------------------------
 		------------------------------- Set highlights ---------------------------------
@@ -24,6 +81,12 @@ return {
 		-- Cmp
 		set_hl(0, "CmpDocBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 		set_hl(0, "CmpDocNormal", { bg = color["NormalFloat"].bg })
+
+		if coloredBackground then
+			for _, v in ipairs(kidns) do
+				setCmpcolor("CmpItemKind" .. v)
+			end
+		end
 
 		-- Notify
 		set_hl(0, "NotifyError", { fg = color["DiagnosticError"].fg })

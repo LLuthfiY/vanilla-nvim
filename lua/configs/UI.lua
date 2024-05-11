@@ -11,7 +11,11 @@ local theme = "poimandres"
 
 local cmpStyle = {
 	fields = { "kind", "abbr", "menu" },
-	kind = "iconBackground",
+	kind = {
+		coloredBackground = true,
+		tailwindColor = true, -- support for tailwind color in cmp
+		stringFormat = "symbol", -- "text" or "symbol", "symbol" by default, can "symbol - text"
+	},
 	menu = {
 		align = "right",
 	},

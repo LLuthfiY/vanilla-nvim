@@ -15,7 +15,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		local config = require("configs.theme")
+		local config = require("configs.UI")
 		local completionStyle = require("util.ui.completionStyle")
 
 		local has_words_before = function()
@@ -55,13 +55,17 @@ return {
 					local width = config.cmpStyle.menu.width or 30
 					local align = config.cmpStyle.menu.align or "left"
 					vim_item = completionStyle.menu.setAlign(entry, vim_item, align, width)
-					vim_item = completionStyle.kind[config.cmpStyle.kind](entry, vim_item)
 					vim_item = completionStyle.abbr.setSpaces(
 						entry,
 						vim_item,
 						config.cmpStyle.abbr.leftSpaces,
 						config.cmpStyle.abbr.rightSpaces
 					)
+					if config.cmpStyle.kind.tailwindColor then
+						vim_item =
+							completionStyle.kind.tailwind(entry, vim_item, config.cmpStyle.kind.coloredBackground)
+					end
+					vim_item = completionStyle.kind.format(entry, vim_item, config.cmpStyle.kind.stringFormat)
 					return vim_item
 				end,
 				fields = { "kind", "abbr", "menu" },

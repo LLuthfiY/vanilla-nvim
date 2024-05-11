@@ -36,19 +36,19 @@ map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Line Up" })
 map({ "n", "i" }, "<C-A-j>", "<cmd>copy +0<CR>", { desc = "Dup Line Down" })
 map({ "n", "i" }, "<C-A-k>", "<cmd>copy -1<CR>", { desc = "Dup Line Up" })
 map("v", "<C-A-j>", function()
-	vim.cmd.normal({ "Y", bang = true })
 	local lastline = vim.fn.getpos("'>")[2]
 	local fistline = vim.fn.getpos("'<")[2]
 	local currentline = vim.fn.getpos(".")[2]
+	vim.cmd.normal({ "Y", bang = true })
 	vim.cmd.normal({ lastline - currentline .. "j", bang = true })
 	vim.cmd.normal({ "p", bang = true })
 	vim.cmd.normal({ "v" .. lastline - fistline .. "j", bang = true })
 end)
 map("v", "<C-A-k>", function()
-	vim.cmd.normal({ "Y", bang = true })
 	local lastline = vim.fn.getpos("'>")[2]
 	local fistline = vim.fn.getpos("'<")[2]
 	local currentline = vim.fn.getpos(".")[2]
+	vim.cmd.normal({ "Y", bang = true })
 	vim.cmd.normal({ currentline - fistline .. "k", bang = true })
 	vim.cmd.normal({ "p", bang = true })
 	vim.cmd.normal({ "v" .. lastline - fistline .. "j", bang = true })
