@@ -17,15 +17,12 @@ local lazygit = Terminal:new({
 	},
 })
 
--- map("n", ";", "<cmd>FineCmdline<CR>", { noremap = true, desc = "CMD enter command mode" })
--- map("n", ":", "<cmd>FineCmdline<CR>", { noremap = true, desc = "CMD enter command mode" })
-map("n", ";", ":")
+map({ "n", "v" }, ";", ":")
+map({ "n", "i", "v" }, "qq", "<ESC>", { desc = "Escape insert and view mode" })
 
 map("n", "<leader>fm", function()
 	require("conform").format({ lsp_fallback = true })
 end, { desc = "File Format with conform" })
-
-map({ "n", "i", "v" }, "qq", "<ESC>", { desc = "Escape insert mode" })
 
 --save
 map({ "n", "i", "v" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
@@ -33,8 +30,29 @@ map({ "n", "i", "v" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
 -- move and copy line
 map({ "n", "i" }, "<A-j>", "<cmd>move .+1<CR>", { desc = "Move Line Down" })
 map({ "n", "i" }, "<A-k>", "<cmd>move .-2<CR>", { desc = "Move Line Up" })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Line Down" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Line Up" })
+
 map({ "n", "i" }, "<C-A-j>", "<cmd>copy +0<CR>", { desc = "Dup Line Down" })
 map({ "n", "i" }, "<C-A-k>", "<cmd>copy -1<CR>", { desc = "Dup Line Up" })
+map("v", "<C-A-j>", function()
+	vim.cmd.normal({ "Y", bang = true })
+	local lastline = vim.fn.getpos("'>")[2]
+	local fistline = vim.fn.getpos("'<")[2]
+	local currentline = vim.fn.getpos(".")[2]
+	vim.cmd.normal({ lastline - currentline .. "j", bang = true })
+	vim.cmd.normal({ "p", bang = true })
+	vim.cmd.normal({ "v" .. lastline - fistline .. "j", bang = true })
+end)
+map("v", "<C-A-k>", function()
+	vim.cmd.normal({ "Y", bang = true })
+	local lastline = vim.fn.getpos("'>")[2]
+	local fistline = vim.fn.getpos("'<")[2]
+	local currentline = vim.fn.getpos(".")[2]
+	vim.cmd.normal({ currentline - fistline .. "k", bang = true })
+	vim.cmd.normal({ "p", bang = true })
+	vim.cmd.normal({ "v" .. lastline - fistline .. "j", bang = true })
+end)
 
 --undo and redo
 map({ "n", "i", "v" }, "<C-z>", "<cmd>undo<CR>", { desc = "Undo" })
