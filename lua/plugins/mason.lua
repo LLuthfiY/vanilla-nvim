@@ -30,7 +30,7 @@ return {
 				"pyright",
 				"eslint-lsp",
 				"rust-analyzer",
-				"emmet-ls",
+				"emmet-language-server",
 			},
 		}
 
