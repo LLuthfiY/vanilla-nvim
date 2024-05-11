@@ -25,7 +25,11 @@ return {
 			if color[hlName] then
 				if color[hlName].link then
 					local link = get_hl_link(color[hlName].link)
-					set_hl(0, hlName, { bg = link.fg, fg = color["NormalFloat"].bg, bold = true })
+					if link.fg then
+						set_hl(0, hlName, { bg = link.fg, fg = color["NormalFloat"].bg, bold = true })
+					else
+						set_hl(0, hlName, { bg = color["NormalFloat"].fg, fg = color["NormalFloat"].bg, bold = true })
+					end
 				else
 					if color[hlName].fg then
 						set_hl(0, hlName, { bg = color[hlName].fg, fg = color["NormalFloat"].bg, bold = true })
