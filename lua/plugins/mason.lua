@@ -31,6 +31,7 @@ return {
 				"eslint-lsp",
 				"rust-analyzer",
 				"emmet-language-server",
+				"prettierd",
 			},
 		}
 
