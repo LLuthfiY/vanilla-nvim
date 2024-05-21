@@ -113,3 +113,11 @@ map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { des
 -- comment
 map({ "n", "i" }, "<c-/>", "<esc>gccvkkkk", { desc = "Comment line", remap = true })
 map({ "v" }, "<c-/>", "gc", { desc = "Comment Select lines", remap = true })
+
+-- copy paste to clipboard using neovide
+if vim.g.neovide then
+	vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })
+	vim.api.nvim_set_keymap("n", "<sc-v>", '"+P', { noremap = true })
+	vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
+	vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+Pi', { noremap = true })
+end
