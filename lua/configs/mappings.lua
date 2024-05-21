@@ -109,3 +109,7 @@ end, { desc = "Conform" })
 
 -- code actions
 map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { desc = "Code action" })
+
+-- comment
+map({ "n", "i" }, "<c-/>", "<esc>gccvkkkk", { desc = "Comment line", remap = true })
+map({ "v" }, "<c-/>", "gc", { desc = "Comment Select lines", remap = true })
