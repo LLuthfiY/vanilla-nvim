@@ -4,4 +4,4 @@ lazy-lock.json
 
 /target
 
-./lua/plugins/learn_vim/hardtime.lua
+/lua/plugins/learn_vim/hardtime.lua
