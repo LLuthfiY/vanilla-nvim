@@ -1,8 +1,7 @@
 lazy-lock.json
 
-
 # Added by cargo
 
 /target
 
-
+./lua/plugins/learn_vim/hardtime.lua

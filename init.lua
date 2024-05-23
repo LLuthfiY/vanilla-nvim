@@ -13,6 +13,7 @@ local lazy_config = require("configs.lazy")
 -- load plugins
 require("lazy").setup({
 	{ import = "plugins" },
+	{ import = "plugins.learn_vim" },
 	{ import = "themes" },
 }, lazy_config)
 
