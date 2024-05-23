@@ -15,7 +15,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		local config = require("configs.UI")
+		local config = require("configs.Settings")
 		local completionStyle = require("util.ui.completionStyle")
 
 		local has_words_before = function()

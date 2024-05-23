@@ -1,4 +1,6 @@
-require("configs.options")
+require("configs.pre-config")
+local settings = require("configs.Settings")
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -11,18 +13,21 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_config = require("configs.lazy")
 
 -- load plugins
-require("lazy").setup({
+local plugins = {
 	{ import = "plugins" },
-	{ import = "plugins.learn_vim" },
 	{ import = "themes" },
-}, lazy_config)
+}
+if settings.practice then
+	table.insert(plugins, { import = "plugins.practice" })
+end
+
+require("lazy").setup(plugins, lazy_config)
 
 vim.schedule(function()
 	require("configs.mappings")
 end)
 
-local configUI = require("configs.UI")
 local colorscheme = require("util.ui.colorscheme")
 
-colorscheme.setColorScheme(configUI.theme)
-colorscheme.SetHighlight(configUI.theme, configUI.cmpStyle.kind.coloredBackground)
+colorscheme.setColorScheme(settings.theme)
+colorscheme.SetHighlight(settings.theme, settings.cmpStyle.kind.coloredBackground)

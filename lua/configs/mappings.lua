@@ -27,6 +27,9 @@ end, { desc = "File Format with conform" })
 --save
 map({ "n", "i", "v" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
 
+-- clear search highlight
+map("n", "<leader>/", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
+
 -- move and copy line
 map({ "n", "i" }, "<A-j>", "<cmd>move .+1<CR>", { desc = "Move Line Down" })
 map({ "n", "i" }, "<A-k>", "<cmd>move .-2<CR>", { desc = "Move Line Up" })
@@ -58,13 +61,14 @@ end)
 map({ "n", "i", "v" }, "<C-z>", "<cmd>undo<CR>", { desc = "Undo" })
 map({ "n", "i", "v" }, "<C-S-z>", "<cmd>redo<CR>", { desc = "Redo" })
 
+-- window
+map({ "n", "i" }, "<C-h>", "<C-w>h", { desc = "Window left" })
+map({ "n", "i" }, "<C-j>", "<C-w>j", { desc = "Window down" })
+map({ "n", "i" }, "<C-k>", "<C-w>k", { desc = "Window up" })
+map({ "n", "i" }, "<C-l>", "<C-w>l", { desc = "Window right" })
+
 -- cursor
 map({ "n", "i" }, "<C-a>", "<ESC>ggVG", { desc = "Select All" })
-map({ "n", "i" }, "<C-d>", "<ESC>viws", { desc = "Delete Word" })
-map("i", "<c-j>", "<down>", { desc = "Move cursor down" })
-map("i", "<c-k>", "<up>", { desc = "Move cursor up" })
-map("i", "<c-h>", "<left>", { desc = "Move cursor left" })
-map("i", "<c-l>", "<right>", { desc = "Move cursor right" })
 
 -- buffer
 map({ "n", "i" }, "qw", function()
@@ -77,12 +81,8 @@ map("n", "<s-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Buffer" }
 map({ "n", "i" }, "<c-q>", "<cmd>q<cr>", { desc = "Quit" })
 
 --terminal
---map({ "n", "i" }, "<c-`>", function() require("nvchad.term").toggle({ pos = "sp", id ='basic' }) end, { desc = "Terminal (root dir)" })
-
---map({ "n", "i" }, "<c-`>", "<cmd>ToggleTerm<cr>", { desc = "Terminal" })
 map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "qq", "<cmd>close<cr>", { desc = "Hide Terminal" })
---nomap("t", "<esc>")
 
 --telescope
 map({ "n", "i" }, "<c-p>", "<cmd>Telescope find_files<cr>", { desc = "Find File" })
