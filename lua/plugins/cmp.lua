@@ -68,7 +68,7 @@ return {
 					vim_item = completionStyle.kind.format(entry, vim_item, config.cmpStyle.kind.stringFormat)
 					return vim_item
 				end,
-				fields = { "kind", "abbr", "menu" },
+				fields = config.cmpStyle.fields,
 			},
 
 			mapping = {
