@@ -17,9 +17,6 @@ local plugins = {
 	{ import = "plugins" },
 	{ import = "themes" },
 }
-if settings.practice then
-	table.insert(plugins, { import = "plugins.practice" })
-end
 
 require("lazy").setup(plugins, lazy_config)
 

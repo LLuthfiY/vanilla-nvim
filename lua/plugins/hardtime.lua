@@ -1,7 +1,8 @@
+local settings = require("lua.configs.Settings")
 return {
 	"m4xshen/hardtime.nvim",
 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	enable = true,
+	enabled = settings.practice,
 	opts = {},
 	config = true,
 	event = {

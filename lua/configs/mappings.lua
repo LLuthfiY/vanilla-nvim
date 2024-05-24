@@ -28,7 +28,7 @@ end, { desc = "File Format with conform" })
 map({ "n", "i", "v" }, "<c-s>", "<cmd>w<cr>", { desc = "Save file" })
 
 -- clear search highlight
-map("n", "<leader>/", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
+map("n", "<leader>h", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 
 -- move and copy line
 map({ "n", "i" }, "<A-j>", "<cmd>move .+1<CR>", { desc = "Move Line Down" })
