@@ -1,4 +1,4 @@
-local settings = require("lua.configs.Settings")
+local settings = require("configs.Settings")
 return {
 	"m4xshen/hardtime.nvim",
 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
