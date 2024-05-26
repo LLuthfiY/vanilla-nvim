@@ -121,3 +121,9 @@ if vim.g.neovide then
 	vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
 	vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+Pi', { noremap = true })
 end
+
+-- inlayhint
+map({ "n", "i" }, "<leader>ih", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+	vim.notify("Inlay Hint " .. (vim.lsp.inlay_hint.is_enabled() and "Enabled" or "Disabled"))
+end, { desc = "Toggle Inlay Hint" })

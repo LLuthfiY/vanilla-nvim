@@ -1,11 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	opts = {
-		inlay_hints = {
-			enabled = true,
-		},
-	},
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		capabilities.textDocument.completion.completionItem = {
@@ -26,13 +21,26 @@ return {
 			},
 		}
 
+		local on_attach = function(client, bufnr)
+			if client.server_capabilities.inlayHintProvider then
+				vim.lsp.inlay_hint.enable(true)
+			end
+		end
+
 		local lspconfig = require("lspconfig")
 		require("mason-lspconfig").setup_handlers({
 			function(server)
-				lspconfig[server].setup({ capabilities = capabilities })
+				lspconfig[server].setup({
+					capabilities = capabilities,
+					on_attach = on_attach,
+				})
 			end,
 			["tsserver"] = function()
-				lspconfig.tsserver.setup({ settings = { completions = { completeFunctionCalls = true } } })
+				lspconfig.tsserver.setup({
+					settings = { completions = { completeFunctionCalls = true } },
+					capabilities = capabilities,
+					on_attach = on_attach,
+				})
 			end,
 		})
 
