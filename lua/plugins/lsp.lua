@@ -24,7 +24,12 @@ return {
 		local lspconfig = require("lspconfig")
 		require("mason-lspconfig").setup_handlers({
 			function(server)
-				lspconfig[server].setup({ capabilities = capabilities })
+				lspconfig[server].setup({
+					capabilities = capabilities,
+					inlay_hints = {
+						enabled = true,
+					},
+				})
 			end,
 			["tsserver"] = function()
 				lspconfig.tsserver.setup({ settings = { completions = { completeFunctionCalls = true } } })
