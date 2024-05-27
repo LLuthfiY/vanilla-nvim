@@ -61,11 +61,9 @@ return {
 		end,
 		format = function(entry, vim_item, stringFormat)
 			stringFormat = stringFormat or "symbol"
-			local temp_kind = vim_item.kind
-			vim_item.kind = stringFormat
-			vim_item.kind = string.gsub(vim_item.kind, "text", temp_kind)
-			vim_item.kind = string.gsub(vim_item.kind, "symbol", icons[temp_kind])
-			vim_item.kind = " " .. vim_item.kind .. " "
+			stringFormat = string.gsub(stringFormat, "text", vim_item.kind)
+			stringFormat = string.gsub(stringFormat, "symbol", icons[vim_item.kind])
+			vim_item.kind = " " .. stringFormat .. " "
 			return vim_item
 		end,
 	},

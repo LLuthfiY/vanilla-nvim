@@ -27,5 +27,6 @@ M.cmpStyle = {
 }
 
 M.practice = true -- if true, enable practice mode (hardtime.lua)
+M.inlayHint = true
 
 return M

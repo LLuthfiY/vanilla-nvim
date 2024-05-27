@@ -21,25 +21,32 @@ return {
 			},
 		}
 
-		local on_attach = function(client, bufnr)
-			if client.server_capabilities.inlayHintProvider then
-				vim.lsp.inlay_hint.enable(true)
-			end
-		end
+		local inlay_hints_settings = {
+			includeInlayEnumMemberValueHints = true,
+			includeInlayFunctionLikeReturnTypeHints = true,
+			includeInlayFunctionParameterTypeHints = true,
+			includeInlayParameterNameHints = "literals",
+			includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+			includeInlayPropertyDeclarationTypeHints = true,
+			includeInlayVariableTypeHints = false,
+			includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+		}
 
 		local lspconfig = require("lspconfig")
 		require("mason-lspconfig").setup_handlers({
 			function(server)
 				lspconfig[server].setup({
 					capabilities = capabilities,
-					on_attach = on_attach,
 				})
 			end,
 			["tsserver"] = function()
 				lspconfig.tsserver.setup({
-					settings = { completions = { completeFunctionCalls = true } },
+					settings = {
+						completions = { completeFunctionCalls = true },
+						typescript = { inlayHints = inlay_hints_settings },
+						javascript = { inlayHints = inlay_hints_settings },
+					},
 					capabilities = capabilities,
-					on_attach = on_attach,
 				})
 			end,
 		})
