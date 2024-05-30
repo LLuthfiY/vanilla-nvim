@@ -60,10 +60,10 @@ return {
 			return vim_item
 		end,
 		format = function(entry, vim_item, stringFormat)
-			stringFormat = stringFormat or "symbol"
-			stringFormat = string.gsub(stringFormat, "text", vim_item.kind)
-			stringFormat = string.gsub(stringFormat, "symbol", icons[vim_item.kind])
-			vim_item.kind = " " .. stringFormat .. " "
+			local stringFormatCopy = stringFormat or "symbol"
+			stringFormatCopy = string.gsub(stringFormatCopy, "text", vim_item.kind)
+			stringFormatCopy = string.gsub(stringFormatCopy, "symbol", icons[vim_item.kind])
+			vim_item.kind = " " .. stringFormatCopy .. " "
 			return vim_item
 		end,
 	},
