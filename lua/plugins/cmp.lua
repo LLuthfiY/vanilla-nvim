@@ -92,17 +92,16 @@ return {
 					-- this way you will only jump inside the snippet region
 					elseif luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
-					elseif vim.fn.exists("b:_codeium_completions") ~= 0 then
-						local text = vim.fn["codeium#Accept"]()
-						-- if string.find(text, "codeium") then
-						if text ~= vim.g.codeium_tab_fallback then
-							vim.api.nvim_input(text)
-						else
-							fallback()
-						end
+					-- elseif vim.fn.exists("b:_codeium_completions") ~= 0 then
+					-- 	local text = vim.fn["codeium#Accept"]()
+					-- 	-- if string.find(text, "codeium") then
+					-- 	if text ~= vim.g.codeium_tab_fallback then
+					-- 		vim.api.nvim_input(text)
+					-- 	else
+					-- 		fallback()
+					-- 	end
 					elseif has_words_before() then
 						cmp.complete()
-					elseif vim.fn["vsnip#available"](1) == 1 then
 					else
 						fallback()
 					end

@@ -1,8 +1,16 @@
+-- return {
+-- 	"Exafunction/codeium.vim",
+-- 	-- event="BufEnter",
+-- 	event = { "BufReadPre", "BufNewFile" },
+-- 	config = function()
+-- 		vim.g.codeium_tab_fallback = "\t"
+-- 	end,
+-- }
 return {
-	"Exafunction/codeium.vim",
-	-- event="BufEnter",
-	event = { "BufReadPre", "BufNewFile" },
+	"monkoose/neocodeium",
+	event = "VeryLazy",
 	config = function()
-		vim.g.codeium_tab_fallback = "\t"
+		local neocodeium = require("neocodeium")
+		neocodeium.setup()
 	end,
 }
