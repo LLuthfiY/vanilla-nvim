@@ -28,7 +28,6 @@ return {
 				"svelte-language-server",
 				"stylua",
 				"pyright",
-				"eslint-lsp",
 				"rust-analyzer",
 				"emmet-language-server",
 				"prettierd",
