@@ -38,7 +38,7 @@ return {
 			end
 		end
 
-		local kidns = {
+		local kinds = {
 			"",
 			"Text",
 			"Method",
@@ -87,7 +87,7 @@ return {
 		set_hl(0, "CmpDocNormal", { bg = color["NormalFloat"].bg })
 
 		if coloredBackground then
-			for _, v in ipairs(kidns) do
+			for _, v in ipairs(kinds) do
 				setCmpcolor("CmpItemKind" .. v)
 			end
 		end
