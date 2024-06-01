@@ -14,9 +14,10 @@
 │   │   └── ui.lua
 │   ├── configs
 │   │   ├── lazy.lua
-│   │   ├── mappings.lua
+│   │   ├── mappings.lua        # keymaps
 │   │   ├── pre-config.lua
-│   │   └── Settings.lua        # settings for neovim
+│   │   ├── Settings.lua        # settings for neovim
+│   │   └── snippets.lua        # snippets
 │   ├── plugins
 │   │   ├── all.lua
 │   │   ├── plugins.lua

@@ -4,8 +4,7 @@ snippet.filetype = {
 	lua = {
 		{
 			prefix = "hw",
-			body = [[print('hello ${1:world}')
-$0]],
+			body = [[print("hello ${1:world}")]],
 		},
 	},
 }

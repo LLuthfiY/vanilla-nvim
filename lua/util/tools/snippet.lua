@@ -28,6 +28,7 @@ M.register_sources = function()
 					kind = vim.lsp.protocol.CompletionItemKind.Snippet,
 					insertText = s.body,
 					insertTextFormat = vim.lsp.protocol.InsertTextFormat.Snippet,
+					detail = s.body,
 				}
 				return item
 			end, get_buf_snips())
