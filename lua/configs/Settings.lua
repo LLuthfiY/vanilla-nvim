@@ -29,7 +29,12 @@ M.cmpStyle = {
 M.tools = {
 	practice = true, -- if true, enable practice mode (hardtime.lua)
 	inlayHint = true,
-	friendlySnippets = true,
+	snippet = {
+		friendlySnippets = true,
+		extendFileType = {
+			typescript = { "javascript" },
+		},
+	},
 }
 
 return M
