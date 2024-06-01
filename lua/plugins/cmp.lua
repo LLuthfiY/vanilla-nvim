@@ -1,11 +1,3 @@
-local test = function(data)
-	local dd = {}
-	for key, value in pairs(data) do
-		table.insert(dd, key)
-	end
-
-	return dd
-end
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
