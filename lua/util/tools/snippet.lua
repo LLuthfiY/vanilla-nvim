@@ -2,6 +2,7 @@ local M = {}
 
 local global_snippets = require("configs.snippets").global
 local snippets_by_filetype = require("configs.snippets").filetype
+local friendly_snippets = require("configs.Settings").tools.friendlySnippets
 
 local function get_buf_snips()
 	local ft = vim.bo.filetype

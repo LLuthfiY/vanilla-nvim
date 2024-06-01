@@ -6,6 +6,9 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"onsails/lspkind.nvim",
+		-- { "garymjr/nvim-snippets", opts = {
+		-- 	friendly_snippets = true,
+		-- }, config = true },
 		"rafamadriz/friendly-snippets",
 	},
 	event = { "BufReadPre", "BufNewFile" },
@@ -98,6 +101,7 @@ return {
 			sources = {
 				{ name = "nvim_lsp" },
 				{ name = "snp" },
+				-- { name = "snippets" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
 				{ name = "path" },

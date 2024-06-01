@@ -26,7 +26,10 @@ M.cmpStyle = {
 	},
 }
 
-M.practice = true -- if true, enable practice mode (hardtime.lua)
-M.inlayHint = true
+M.tools = {
+	practice = true, -- if true, enable practice mode (hardtime.lua)
+	inlayHint = true,
+	friendlySnippets = true,
+}
 
 return M
