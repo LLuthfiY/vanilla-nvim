@@ -43,7 +43,7 @@ return {
 
 			formatting = {
 				format = function(entry, vim_item)
-					if entry.completion_item.detail then
+					if entry.completion_item.detail and not vim_item.menu then
 						vim_item.menu = entry.completion_item.detail
 					end
 
