@@ -1,6 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
+	event = "VeryLazy",
 	config = function()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		capabilities.textDocument.completion.completionItem = {

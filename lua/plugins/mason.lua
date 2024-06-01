@@ -9,7 +9,8 @@ return {
 		"MasonLog",
 		"MasonInstallAll",
 	},
-	lazy = false,
+	-- lazy = false,
+	event = "VeryLazy",
 	build = ":MasonUpdate",
 	config = function()
 		local mason = require("mason")
