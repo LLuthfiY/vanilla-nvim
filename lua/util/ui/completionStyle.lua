@@ -64,8 +64,8 @@ return {
 			if stringFormatCopy and vim_item.kind then
 				stringFormatCopy = string.gsub(stringFormatCopy, "text", vim_item.kind)
 				stringFormatCopy = string.gsub(stringFormatCopy, "symbol", icons[vim_item.kind])
+				vim_item.kind = " " .. stringFormatCopy .. " "
 			end
-			vim_item.kind = " " .. stringFormatCopy .. " "
 			return vim_item
 		end,
 	},

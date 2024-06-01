@@ -5,16 +5,61 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"L3MON4D3/LuaSnip",
+		{
+			"garymjr/nvim-snippets",
+			keys = {
+				{
+					"<Tab>",
+					function()
+						if vim.snippet.active({ direction = 1 }) then
+							vim.schedule(function()
+								vim.snippet.jump(1)
+							end)
+							return
+						end
+						return "<Tab>"
+					end,
+					expr = true,
+					silent = true,
+					mode = "i",
+				},
+				{
+					"<Tab>",
+					function()
+						vim.schedule(function()
+							vim.snippet.jump(1)
+						end)
+					end,
+					expr = true,
+					silent = true,
+					mode = "s",
+				},
+				{
+					"<S-Tab>",
+					function()
+						if vim.snippet.active({ direction = -1 }) then
+							vim.schedule(function()
+								vim.snippet.jump(-1)
+							end)
+							return
+						end
+						return "<S-Tab>"
+					end,
+					expr = true,
+					silent = true,
+					mode = { "i", "s" },
+				},
+			},
+			opts = {
+				friendly_snippets = true,
+			},
+		},
 		"onsails/lspkind.nvim",
-		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("luasnip.loaders.from_vscode").lazy_load()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
 		local config = require("configs.Settings")
 		local completionStyle = require("util.ui.completionStyle")
 
@@ -42,7 +87,7 @@ return {
 			},
 			snippet = {
 				expand = function(args)
-					require("luasnip").lsp_expand(args.body)
+					vim.snippet.expand(args.body)
 				end,
 			},
 
@@ -78,40 +123,22 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.close(),
-
 				["<CR>"] = cmp.mapping.confirm({
-					behavior = cmp.ConfirmBehavior.Insert,
+					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				}),
-
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
-						-- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
 						cmp.select_next_item()
-					-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
-					-- this way you will only jump inside the snippet region
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					-- elseif vim.fn.exists("b:_codeium_completions") ~= 0 then
-					-- 	local text = vim.fn["codeium#Accept"]()
-					-- 	-- if string.find(text, "codeium") then
-					-- 	if text ~= vim.g.codeium_tab_fallback then
-					-- 		vim.api.nvim_input(text)
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					elseif has_words_before() then
-						cmp.complete()
+					-- elseif has_words_before() then
+					-- 	cmp.complete()
 					else
 						fallback()
 					end
 				end, { "i", "s" }),
-
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif require("luasnip").jumpable(-1) then
-						vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
 					else
 						fallback()
 					end
@@ -119,7 +146,7 @@ return {
 			},
 			sources = {
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
+				{ name = "snippets" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
 				{ name = "path" },
