@@ -99,8 +99,8 @@ return {
 				end, { "i", "s" }),
 			},
 			sources = {
-				{ name = "snp" },
 				{ name = "nvim_lsp" },
+				{ name = "snp" },
 				-- { name = "snippets" },
 				{ name = "buffer" },
 				{ name = "nvim_lua" },
