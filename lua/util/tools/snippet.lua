@@ -31,17 +31,17 @@ local function get_buf_snips()
 	local snips = global_snippets or {}
 	local fs = get_friendly_snippets() or {}
 
-	if ft and snippets_by_filetype[ft] then
-		snips = vim.tbl_deep_extend("force", snips, snippets_by_filetype[ft])
-	end
-
 	if fs[ft] then
 		snips = vim.tbl_deep_extend("force", snips, fs[ft])
 	end
 
+	if ft and snippets_by_filetype[ft] then
+		snips = vim.tbl_deep_extend("force", snips, snippets_by_filetype[ft])
+	end
+
 	for _, v in pairs(extendFiletype[ft] or {}) do
-		snips = vim.tbl_deep_extend("force", snips, snippets_by_filetype[v] or {})
 		snips = vim.tbl_deep_extend("force", snips, fs[v] or {})
+		snips = vim.tbl_deep_extend("force", snips, snippets_by_filetype[v] or {})
 	end
 	return snips
 end
