@@ -114,13 +114,11 @@ map({ "n", "v", "i" }, "<A-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>", { des
 -- map({ "n", "i" }, "<c-/>", "<esc>gc", { desc = "Comment line", remap = true })
 -- map({ "v" }, "<c-/>", "gc", { desc = "Comment Select lines", remap = true })
 
--- copy paste to clipboard using neovide
-if vim.g.neovide then
-	vim.api.nvim_set_keymap("v", "<sc-c>", '"+y', { noremap = true })
-	vim.api.nvim_set_keymap("n", "<sc-v>", '"+P', { noremap = true })
-	vim.api.nvim_set_keymap("v", "<sc-v>", '"+P', { noremap = true })
-	vim.api.nvim_set_keymap("i", "<sc-v>", '<ESC>"+Pi', { noremap = true })
-end
+-- copy paste to clipboard
+map("v", "<sc-c>", '"+y', { noremap = true })
+map("n", "<sc-v>", '"+P', { noremap = true })
+map("v", "<sc-v>", '"+P', { noremap = true })
+map("i", "<sc-v>", '<ESC>"+Pi', { noremap = true })
 
 -- inlayhint
 map({ "n" }, "<leader>ih", function()
