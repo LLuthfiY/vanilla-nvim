@@ -41,6 +41,7 @@ M.tools = {
 			typescript = { "javascript" },
 			typescriptreact = { "typescript", "react" },
 			javascriptreact = { "javascript", "react" },
+			svelte = { "html", "css", "javascript", "typescript" },
 		},
 	},
 }
