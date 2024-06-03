@@ -18,7 +18,8 @@ M.cmpStyle = {
 		stringFormat = "symbol", -- "text" or "symbol", "symbol" by default, can "symbol - text"
 	},
 	menu = {
-		align = "left",
+		align = "right",
+		width = 40,
 	},
 	abbr = {
 		leftSpaces = 0,

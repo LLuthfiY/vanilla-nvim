@@ -47,7 +47,10 @@ return {
 						vim_item.menu = entry.completion_item.detail
 					end
 
-					local width = config.cmpStyle.menu.width or 30
+					if entry.completion_item.menu then
+						vim_item.menu = entry.completion_item.menu
+					end
+					local width = config.cmpStyle.menu.width
 					local align = config.cmpStyle.menu.align or "left"
 					vim_item = completionStyle.menu.setAlign(entry, vim_item, align, width)
 					vim_item = completionStyle.abbr.setSpaces(

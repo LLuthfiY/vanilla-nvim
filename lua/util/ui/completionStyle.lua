@@ -10,6 +10,13 @@ local contrast_color = function(hexColor)
 	end
 end
 
+local ternary = function(condition, trueValue, falseValue)
+	if condition then
+		return trueValue
+	else
+		return falseValue
+	end
+end
 local icons = {
 	Text = "󰉿",
 	Method = "󰆧",
@@ -72,10 +79,8 @@ return {
 	menu = {
 		setAlign = function(entry, vim_item, align, width)
 			if vim_item.menu ~= nil then
-				local isWidthSetted = align == "right" or width or false
-				if isWidthSetted then
-					width = width or 30
-				end
+				width = width or (ternary(align == "right", 30, 9999))
+				print(width)
 				if string.len(vim_item.menu) > width then
 					local leftCharacters = math.floor(width / 2)
 					local rightCharacters = (width - leftCharacters - 3)
@@ -83,10 +88,10 @@ return {
 						.. "..."
 						.. string.sub(vim_item.menu, -rightCharacters)
 				end
-				if isWidthSetted then
-					if align == "left" then
-						width = width * -1
-					end
+				if align == "left" then
+					width = width * -1
+				end
+				if width ~= -9999 then
 					vim_item.menu = string.format("%" .. width .. "s", vim_item.menu)
 				end
 			end

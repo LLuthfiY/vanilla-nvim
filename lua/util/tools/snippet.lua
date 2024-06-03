@@ -63,7 +63,8 @@ M.register_sources = function()
 				if type(prefix) == "string" then
 					local item = {
 						word = value.prefix,
-						label = value.prefix .. "   " .. key,
+						label = value.prefix,
+						menu = key,
 						kind = vim.lsp.protocol.CompletionItemKind.Snippet,
 						insertText = body,
 						insertTextFormat = vim.lsp.protocol.InsertTextFormat.Snippet,
@@ -74,7 +75,8 @@ M.register_sources = function()
 					for _, item in ipairs(prefix) do
 						table.insert(completion_items, {
 							word = item,
-							label = item .. "   " .. key,
+							label = item,
+							menu = key,
 							kind = vim.lsp.protocol.CompletionItemKind.Snippet,
 							insertText = body,
 							insertTextFormat = vim.lsp.protocol.InsertTextFormat.Snippet,
