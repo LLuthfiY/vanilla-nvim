@@ -79,8 +79,7 @@ return {
 	menu = {
 		setAlign = function(entry, vim_item, align, width)
 			if vim_item.menu ~= nil then
-				width = width or (ternary(align == "right", 30, 9999))
-				print(width)
+				width = width or (ternary(align == "right", 30, 99999999))
 				if string.len(vim_item.menu) > width then
 					local leftCharacters = math.floor(width / 2)
 					local rightCharacters = (width - leftCharacters - 3)
@@ -91,7 +90,7 @@ return {
 				if align == "left" then
 					width = width * -1
 				end
-				if width ~= -9999 then
+				if width ~= -99999999 then
 					vim_item.menu = string.format("%" .. width .. "s", vim_item.menu)
 				end
 			end
