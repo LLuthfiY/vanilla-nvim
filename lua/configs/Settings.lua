@@ -10,8 +10,8 @@ local M = {}
 --------------------------------------------------------------------------------
 
 M.UI = {
-	theme = "no-clown-fiesta",
-
+	theme = "everforest",
+	transparent = true,
 	cmpStyle = {
 		fields = { "kind", "abbr", "menu" },
 		kind = {
