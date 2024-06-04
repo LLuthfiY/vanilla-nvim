@@ -91,6 +91,7 @@ return {
 				setCmpcolor("CmpItemKind" .. v)
 			end
 		end
+		set_hl(0, "LspInlayHint", { fg = color["Comment"].fg })
 
 		-- Notify
 		set_hl(0, "NotifyError", { fg = color["DiagnosticError"].fg })
@@ -115,7 +116,6 @@ return {
 			set_hl(0, "TelescopePromptPrefix", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
 			set_hl(0, "TelescopeResultsBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
 			set_hl(0, "TelescopePreviewBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
-			set_hl(0, "LspInlayHint", { fg = color["Comment"].fg })
 			-- set_hl(0, "CmpNormal", { bg = color["Comment"].fg, fg = color["Comment"].fg })
 		end
 

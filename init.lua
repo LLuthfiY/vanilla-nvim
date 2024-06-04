@@ -25,7 +25,7 @@ end)
 
 local req = require("util.tools.requireAll")
 local settings = require("configs.Settings")
-vim.cmd("colorscheme " .. settings.theme) -- prevent colorscheme flickering while loading
+vim.cmd("colorscheme " .. settings.UI.theme) -- prevent colorscheme flickering while loading
 vim.schedule(function()
 	req.all("lua/auto-commands/*.lua")
 end)
