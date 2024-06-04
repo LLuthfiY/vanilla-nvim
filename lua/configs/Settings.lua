@@ -5,25 +5,28 @@ local M = {}
 -- you can install theme in folder /lua/themes (recommended for aesthetic) or --
 ------------------------------ /lua/plugins ------------------------------------
 --------------------------------------------------------------------------------
-M.theme = "nord"
 --------------------------------------------------------------------------------
 ------------------------------ Set Cmp Style -----------------------------------
 --------------------------------------------------------------------------------
 
-M.cmpStyle = {
-	fields = { "kind", "abbr", "menu" },
-	kind = {
-		coloredBackground = true,
-		tailwindColor = true, -- support for tailwind color in cmp
-		stringFormat = "symbol", -- "text" or "symbol", "symbol" by default, can "symbol - text"
-	},
-	menu = {
-		align = "right",
-		width = 40,
-	},
-	abbr = {
-		leftSpaces = 0,
-		rightSpaces = 8,
+M.UI = {
+	theme = "no-clown-fiesta",
+
+	cmpStyle = {
+		fields = { "kind", "abbr", "menu" },
+		kind = {
+			coloredBackground = true,
+			tailwindColor = true, -- support for tailwind color in cmp
+			stringFormat = "symbol", -- "text" or "symbol", "symbol" by default, can "symbol - text"
+		},
+		menu = {
+			align = "right",
+			width = 30,
+		},
+		abbr = {
+			leftSpaces = 0,
+			rightSpaces = 8,
+		},
 	},
 }
 

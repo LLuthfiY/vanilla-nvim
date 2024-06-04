@@ -50,23 +50,23 @@ return {
 					if entry.completion_item.menu then
 						vim_item.menu = entry.completion_item.menu
 					end
-					local width = config.cmpStyle.menu.width
-					local align = config.cmpStyle.menu.align or "left"
+					local width = config.UI.cmpStyle.menu.width
+					local align = config.UI.cmpStyle.menu.align or "left"
 					vim_item = completionStyle.menu.setAlign(entry, vim_item, align, width)
 					vim_item = completionStyle.abbr.setSpaces(
 						entry,
 						vim_item,
-						config.cmpStyle.abbr.leftSpaces,
-						config.cmpStyle.abbr.rightSpaces
+						config.UI.cmpStyle.abbr.leftSpaces,
+						config.UI.cmpStyle.abbr.rightSpaces
 					)
-					if config.cmpStyle.kind.tailwindColor then
+					if config.UI.cmpStyle.kind.tailwindColor then
 						vim_item =
-							completionStyle.kind.tailwind(entry, vim_item, config.cmpStyle.kind.coloredBackground)
+							completionStyle.kind.tailwind(entry, vim_item, config.UI.cmpStyle.kind.coloredBackground)
 					end
-					vim_item = completionStyle.kind.format(entry, vim_item, config.cmpStyle.kind.stringFormat)
+					vim_item = completionStyle.kind.format(entry, vim_item, config.UI.cmpStyle.kind.stringFormat)
 					return vim_item
 				end,
-				fields = config.cmpStyle.fields,
+				fields = config.UI.cmpStyle.fields,
 			},
 
 			mapping = {

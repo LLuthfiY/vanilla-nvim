@@ -6,6 +6,8 @@ return {
 
 		notify.setup({
 			render = "minimal",
+			background_colour = "#000000",
+			fps = 30,
 			stages = "fade_in_slide_out",
 			timeout = 3000,
 			max_height = function()
