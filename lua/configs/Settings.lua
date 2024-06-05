@@ -7,7 +7,7 @@ local M = {}
 --------------------------------------------------------------------------------
 
 M.UI = {
-	theme = "nord",
+	theme = "poimandres",
 	transparent = true,
 	cmpStyle = {
 		fields = { "kind", "abbr", "menu" },
