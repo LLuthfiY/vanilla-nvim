@@ -6,7 +6,8 @@ return {
 		transparent.clear_prefix("BufferLine")
 		transparent.clear_prefix("NeoTree")
 		transparent.clear_prefix("barbecue")
-		-- transparent.clear_prefix("lualine")
+		transparent.clear_prefix("lualine_c")
+		transparent.clear_prefix("lualine_x")
 		transparent.setup()
 	end,
 }

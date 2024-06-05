@@ -74,6 +74,8 @@ return {
 		set_hl(0, "NoiceConfirm", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
 		set_hl(0, "NoiceConfirmBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
 
+		set_hl(0, "NoiceMini", color["NormalFloat"])
+
 		-- Telescope
 		set_hl(0, "TelescopeNormal", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
 		set_hl(0, "TelescopeBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
