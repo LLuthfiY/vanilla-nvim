@@ -71,6 +71,9 @@ return {
 		------------------------------- Set highlights ---------------------------------
 		--------------------------------------------------------------------------------
 
+		set_hl(0, "NoiceConfirm", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NoiceConfirmBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
+
 		-- Telescope
 		set_hl(0, "TelescopeNormal", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].fg })
 		set_hl(0, "TelescopeBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
@@ -94,14 +97,26 @@ return {
 		set_hl(0, "LspInlayHint", { fg = color["Comment"].fg })
 
 		-- Notify
-		set_hl(0, "NotifyError", { fg = color["DiagnosticError"].fg })
-		set_hl(0, "NotifyERRORBorder", { fg = color["DiagnosticError"].fg })
-		set_hl(0, "NotifyWarning", { fg = color["DiagnosticWarn"].fg })
-		set_hl(0, "NotifyWARNBorder", { fg = color["DiagnosticWarn"].fg })
-		set_hl(0, "NotifyInfo", { fg = color["DiagnosticInfo"].fg })
-		set_hl(0, "NotifyINFOBorder", { fg = color["DiagnosticInfo"].fg })
-		set_hl(0, "NotifyHint", { fg = color["DiagnosticHint"].fg })
-		set_hl(0, "NotifyHINTBorder", { fg = color["DiagnosticHint"].fg })
+		set_hl(0, "NotifyERRORBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyWARNBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyINFOBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyDEBUGBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyTRACEBorder", { fg = color["NormalFloat"].bg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyERRORIcon", { fg = color["DiagnosticError"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyWARNIcon", { fg = color["DiagnosticWarn"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyINFOIcon", { fg = color["DiagnosticInfo"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyDEBUGIcon", { fg = color["Special"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyTRACEIcon", { fg = color["Special"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyERRORTitle", { fg = color["DiagnosticError"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyWARNTitle", { fg = color["DiagnosticWarn"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyINFOTitle", { fg = color["DiagnosticInfo"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyDEBUGTitle", { fg = color["Special"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyTRACETitle", { fg = color["Special"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyERRORBody", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyWARNBody", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyINFOBody", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyDEBUGBody", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
+		set_hl(0, "NotifyTRACEBody", { fg = color["NormalFloat"].fg, bg = color["NormalFloat"].bg })
 
 		-- ToggleTerm
 		set_hl(0, "ToggleTermBorder", { bg = color["NormalFloat"].bg, fg = color["NormalFloat"].bg })
