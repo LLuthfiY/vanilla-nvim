@@ -2,7 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	-- event = {"bufReadPre", "BufNewFile"},
 	-- lazy = false,
-	event = "VeryLazy",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		function GetCurrentDiagnostic()
