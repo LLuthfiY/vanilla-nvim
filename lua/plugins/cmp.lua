@@ -14,7 +14,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local cmp = require("cmp")
-		local config = require("configs.Settings")
+		local setting = require("configs.Settings")
 		local completionStyle = require("util.ui.completionStyle")
 		local snippet = require("util.tools.snippet")
 		cmp.register_source("snp", snippet.register_sources())
@@ -50,23 +50,23 @@ return {
 					if entry.completion_item.menu then
 						vim_item.menu = entry.completion_item.menu
 					end
-					local width = config.UI.cmpStyle.menu.width
-					local align = config.UI.cmpStyle.menu.align or "left"
+					local width = setting.UI.cmpStyle.menu.width
+					local align = setting.UI.cmpStyle.menu.align or "left"
 					vim_item = completionStyle.menu.setAlign(entry, vim_item, align, width)
 					vim_item = completionStyle.abbr.setSpaces(
 						entry,
 						vim_item,
-						config.UI.cmpStyle.abbr.leftSpaces,
-						config.UI.cmpStyle.abbr.rightSpaces
+						setting.UI.cmpStyle.abbr.leftSpaces,
+						setting.UI.cmpStyle.abbr.rightSpaces
 					)
-					if config.UI.cmpStyle.kind.tailwindColor then
+					if setting.UI.cmpStyle.kind.tailwindColor then
 						vim_item =
-							completionStyle.kind.tailwind(entry, vim_item, config.UI.cmpStyle.kind.coloredBackground)
+							completionStyle.kind.tailwind(entry, vim_item, setting.UI.cmpStyle.kind.coloredBackground)
 					end
-					vim_item = completionStyle.kind.format(entry, vim_item, config.UI.cmpStyle.kind.stringFormat)
+					vim_item = completionStyle.kind.format(entry, vim_item, setting.UI.cmpStyle.kind.stringFormat)
 					return vim_item
 				end,
-				fields = config.UI.cmpStyle.fields,
+				fields = setting.UI.cmpStyle.fields,
 			},
 
 			mapping = {
