@@ -6,15 +6,18 @@ local function get_friendly_snippets()
 		local friendlySnippetsPath = vim.fn.stdpath("data") .. "/lazy/friendly-snippets/snippets"
 		local friendlySnippetsTable = {}
 		for file in io.popen("find " .. friendlySnippetsPath .. [[ -name "*.json"]]):lines() do
-			local lang = vim.fn.fnamemodify(file, ":t:r")
-			local f = io.open(file, "r")
-			if not f then
-				return
-			end
-			local content = f:read("*all")
-			io.close(f)
-			local snippets = vim.json.decode(content)
-			friendlySnippetsTable[lang] = snippets
+			pcall(function()
+				local lang = vim.fn.fnamemodify(file, ":t:r")
+				local f = io.open(file, "r")
+				if not f then
+					return
+				end
+				local content = f:read("*all")
+				io.close(f)
+				print(lang)
+				local snippets = vim.json.decode(content)
+				friendlySnippetsTable[lang] = snippets
+			end)
 		end
 
 		return friendlySnippetsTable
