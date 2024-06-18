@@ -14,7 +14,6 @@ local function get_friendly_snippets()
 				end
 				local content = f:read("*all")
 				io.close(f)
-				print(lang)
 				local snippets = vim.json.decode(content)
 				friendlySnippetsTable[lang] = snippets
 			end)
